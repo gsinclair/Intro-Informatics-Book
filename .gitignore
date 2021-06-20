@@ -1,0 +1,9 @@
+*.log
+*.aux
+*.toc
+*.fls
+*.w18
+_minted*
+*.pdf
+*.aex
+*.fdb_latexmk

@@ -1,0 +1,51 @@
+
+\questionheader{\theproblemnumber\ Golf (2)}
+
+This question varies the earlier \emph{Golf (1)} with an arbitrary number of players and
+holes.
+
+\Question\ A group of $N$ people play a game of golf (with $Q$ holes), and you must write
+a program to determine the winner. As before, whoever wins the most holes is the winner.
+If there is a tie for most holes won, then it's whoever took the fewest overall shots.
+
+\Input\ The first line of \IN\ contains the integers $N$ and $Q$, the number of players
+and number of holes, respectively. The next line contains $N$ space-separated strings,
+which are the first names of all the players. Then there are $N$ lines containing $Q$
+integers each, which are the players' scores on the $Q$ holes.
+
+\Output
+\begin{itemize}
+  \item If one player won more holes than any other player, you will output a line like
+    \texttt{John won by 4 holes}.
+  \item If holes are tied but one player scored a lower total than any other, you will
+    output a line like \texttt{Samantha won by 3 points}.
+  \item Otherwise, you will output \texttt{There was no winner}.
+\end{itemize}
+
+\Sample
+
+\sample{0.3}{4 7\\
+             Sam Steve Terri Kate\\
+             5 3 5 6 7 5 5\\
+             4 3 5 4 5 5 4\\
+             4 4 4 4 4 5 3\\
+             3 3 4 5 4 3 4}
+       {0.3}{Kate won by 1 hole}
+
+\vspace{12pt}
+\sample{0.3}{...}
+       {0.3}{...}
+
+\vspace{12pt}
+\sample{0.3}{...}
+       {0.3}{...}
+
+\Explanation
+
+\begin{itemize}
+  \item In the first sample, the winner of the seven holes were (using player numbers
+    1--4): 4, -, -, -, -, 4, 3. Thus player 4 (Kate) won by one hole.
+    \item In the second sample, ...
+    \item In the third sample, ...
+\end{itemize}
+

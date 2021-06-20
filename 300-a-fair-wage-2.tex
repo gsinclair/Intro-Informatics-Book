@@ -1,0 +1,45 @@
+
+\questionheader{\theproblemnumber\ A fair wage (2)}
+
+\Question\ In the years since you completed \emph{A fair wage (1)}, your company has
+grown and grown, so the quaint idea of reading in just six numbers and assigning each to
+its own variable to each has pretty much faded from memory. You now have $N$ workers and
+want to do the same test: check that the \emph{range} of wages is no greater than 10\% of
+the maximum wage. Except in recent times you've found the 10\% measure to be a little too
+inflexible. So now the target percentage $P$ will be included in your data.
+
+\Input\ From \IN\ you will read:
+\begin{itemize}
+  \item the integer $N$ ($5 < N < 1000$), the number of employees at your company;
+  \item the float $P$ ($1.0 < P < 30.0$), the percentage used to determine whether the
+    wages are fair;
+  \item $N$ lines, each containing a float representing an employee's weekly wage.
+\end{itemize}
+
+\Output\ To \OUT\ you will write three values:
+\begin{itemize}
+  \item The range of wages, rounded to two decimal placs
+  \item The highest wage, rounded to two decimal placs
+  \item \texttt{yes} or \texttt{no} according to whether your wages are fair
+\end{itemize}
+
+\Sample
+
+\sample{0.2}{7\\8.5\\635.17\\622.25\\631.02\\631.02\\628.56\\599.75\\608.10}
+       {0.2}{35.42\\635.17\\yes}
+
+\Explanation\ In the sample, the range is about 5.58\% of the maximum wage, which is less
+than the target percentage 8.5\%, so the wages are fair.
+
+\Scratch\ You know how to find the \pycode/max/ or \pycode/min/ of a group of individual
+numbers, but in this problem you need the maximum and minimum of a \emph{list} of numbers.
+That's no problem. The Python functions are very flexible:
+\begin{pythoncode} 
+  max(3,7,5,1,2)           # -> 7
+  max([3,7,1,5,2])         # -> 7
+\end{pythoncode}
+
+There are five arguments in line 1 and only one argument (a list) in line 2, but the
+result is the same. \pycode/max/ can take any number of arguments and knows what to
+do if it is passed a single list.
+

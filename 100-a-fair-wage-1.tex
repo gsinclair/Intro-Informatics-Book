@@ -1,0 +1,38 @@
+
+\questionheader{\theproblemnumber\ A fair wage (1)}
+
+\Question\ There are six employees in your company all doing roughly the same kind of
+work. Some have worked for you for a longer time, or are generally more productive, so you
+pay them a bit more. But once a year you take a look to see if the overall distribution of
+wages seems to be fair.
+
+The first thing you look for is the \emph{range} of wages: the highest minus the lowest.
+You have a rule that the range should be less than 10\% of the highest wage.
+
+\Input\ From \IN\ you will read six floats, each representing a weekly wage.
+
+\Output\ To \OUT\ you will write three values:
+\begin{itemize}
+  \item The range, rounded to two decimal placs
+  \item The highest wage, rounded to two decimal placs
+  \item \texttt{yes} or \texttt{no} according to whether your wages are fair
+\end{itemize}
+
+\Sample
+
+\minipagestwo{\sample{0.4}{535.00\\517.50\\580.00\\575.89\\553.60\\521.45}
+                     {0.4}{62.50\\580.00\\no}}
+             {\sample{0.4}{535.00\\517.50\\570.00\\570.00\\553.60\\521.45}
+                     {0.4}{52.50\\570.00\\yes}}
+
+\Explanation\ In the first sample, the range is about 10.78\% of the maximum wage, thus
+the wages are not fair. In the second sample, the range is about 9.21\% of the maximum
+wage, thus the wages are fair.
+
+\Scratch\ After completing \emph{Who is the tallest? (2)}, you should be comfortable
+reading six numbers%
+\footnote{Remember to use \pycode/float(IN.readline())/ instead of \pycode/int(...)/,
+though.}
+and finding their maximum. To find the minimum, just use \pycode/min/ instead of
+\pycode/max/.
+

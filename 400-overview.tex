@@ -1,0 +1,111 @@
+
+
+\chapter{Problems 4xx: miscellaneous problems}
+
+There are no new skills in this chapter, just a range of problems for you to try.
+
+There is one new thing to learn about reading input, however, and that is \textbf{reading
+multiple inputs on the same line}. Problem 401 below demonstrates this.
+
+
+% ---------------------------------------------------------------- Name, age, hourly rate
+
+\questionheader{\theproblemnumber\ Name, age and hourly rate}
+
+There is no ``question'' here, really. You will simply read data about multiple people
+from three lines of \IN, and write that data to \OUT\ in a more readable format. In so
+doing, you will learn how to read multiple values from one line, and how to use Python's
+format strings.
+
+\Sample
+
+\sample{0.3}{James Lynne Toni Gerard\\
+             23 21 20 21\\
+             18.5 21.25 22.30 21}
+       {0.6}{James is 23 years old and earns \$18.50 per hour\\
+             Lynne is 21 years old and earns \$21.00 per hour\\
+             Toni is 20 years old and earns \$22.30 per hour\\
+             Gerard is 21 years old and earns \$21.00 per hour}
+
+\Scratch\ To read multiple items from one line, we use Python's \pycode|split()| function.%
+\footnote{Technically, \pycode|split()| is a \emph{method} of the \pycode|String| class.
+That's more detail than we want at the moment. We'll think of it as a \emph{function} that
+acts directly on string objects.}
+If you try \pycode|"one two three four".split()| you'll get the idea of what
+\pycode|split()| does.
+
+So the four names in the sample can be read with:
+\begin{pythoncode}
+  names = IN.readline().split()
+             # -> ['James', 'Lynne', 'Toni', 'Gerard']
+\end{pythoncode}
+
+The ages and hourly rates, however, need to be converted to integers and floats:
+\begin{pythoncode}
+  ages  = [int(x) for x in IN.readline().split()]
+             # -> [23, 21, 20, 21]
+
+  rates = [float(x) for x in IN.readline().split()]
+             # -> [18.5, 21.25, 22.3, 21.0]
+\end{pythoncode}
+
+These are using Python's superpower, list comprehensions, which enable us to transform one
+list---say, \pycode|['23', '21', '20', '21']|---into another, like \pycode|[23, 21, 20,
+21]|.
+
+You have two choices when it comes to understanding the above code:
+\begin{enumerate}
+  \item Memorise how to read multiple strings or ints or floats from one line, and leave
+    it at that; or
+  \item Understand fully how the code works so that you can use list comprehensions to
+    power up your own code.
+\end{enumerate}
+
+The choice is yours, but you \emph{must} do at least \#1 above.
+
+\Solution
+
+\begin{pythoncode}
+  def train401(IN, OUT):
+    names = IN.readline().split()
+    ages  = [int(x)   for x in IN.readline().split()]
+    rates = [float(x) for x in IN.readline().split()]
+
+    for i in range(len(names)):
+      rate = round(rates[i],2)
+      text = f'{names[i] is {ages[i]} years old and earns ${rate} per hour'
+      print(text, file=OUT)
+\end{pythoncode}
+
+\Afterword Using another list comprehension, we can do all the float rounding in one go.
+Here is a more sophisticated solution. Note Lines 5 and 8.
+
+\begin{pythoncode}
+  def train401(IN, OUT):
+    names = IN.readline().split()
+    ages  = [int(x)   for x in IN.readline().split()]
+    rates = [float(x) for x in IN.readline().split()]
+    rates = [round(x,2) for x in rates]
+
+    for i in range(len(names)):
+      text = f'{names[i] is {ages[i]} years old and earns ${rates[i]} per hour'
+      print(text, file=OUT)
+\end{pythoncode}
+
+Also, we can push formatted strings further to create a nice tabular output. This will not
+pass the test for problem \theproblemnumber, so it's named differently, but you can still
+run it with \pycode|l.run(train401a)| and provide your own data.
+
+\begin{pythoncode}
+  def train401a(IN, OUT):
+    names = IN.readline().split()
+    ages  = [int(x)   for x in IN.readline().split()]
+    rates = [float(x) for x in IN.readline().split()]
+    rates = [round(x,2) for x in rates]
+
+    print(f"{'Name:12} {'Age':>6} {'Rate:>7}", file=OUT)
+    for i in range(len(names)):
+      text = f'{names[i]:12} {ages[i]:>6} {rates[i]:>7}'
+      print(text, file=OUT)
+\end{pythoncode}
+

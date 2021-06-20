@@ -1,0 +1,98 @@
+\questionheader{\theproblemnumber\ Who is the tallest (1)? \stronghint}
+
+\Question\ In the schoolyard you determine who is the tallest by standing back to back.
+Among your online friends, though, the only way to find this out is to compare numbers.
+There are four people in your group, and so when everyone has entered their height in
+centimetres, all that remains is to pick the largest number out of the list.
+
+Your program will read four numbers from \IN\ and write the largest number to \OUT.
+
+\Sample
+
+\sample{0.2}{147\\165\\171\\168}
+       {0.2}{171}
+
+\Scratch\ To read four numbers we just call \code{IN.readline()} four times, storing the
+value in a different variable each time. Because we're reading numbers and want to
+\emph{treat} them as numbers (not text), we use the \code{int} function as well.
+
+\begin{pythoncode}
+    a = int(IN.readline())
+    b = int(IN.readline())
+    c = int(IN.readline())
+    d = int(IN.readline())
+\end{pythoncode}
+
+We now have all our data. All that remains is to decide which is the largest of $a$, $b$,
+$c$ and $d$.
+
+\begin{pythoncode}
+    if a >= b and a >= c and a >= d:
+        ...
+\end{pythoncode}
+
+If the condition above is true, then $a$ is the largest of the four, or at least the equal
+largest. What do we do in this scenario?
+
+\begin{pythoncode}
+    if a >= b and a >= c and a >= d:
+        answer = a
+\end{pythoncode}
+
+We store the value of $a$ in a new variable called \emph{answer}.
+
+To the two lines of code provided above, you can add six more to make a complete
+determination of the largest value among $a$, $b$, $c$ and $d$.
+
+\Solution\ A complete solution looks like this, except for the six lines you need to add.
+
+\begin{pythoncode}
+    import plcinformatics as p
+
+    def train101(IN, OUT):
+        a = int(IN.readline())
+        b = int(IN.readline())
+        c = int(IN.readline())
+        d = int(IN.readline())
+
+        if a >= b and a >= c and a >= d:
+            answer = a
+        #
+        # ...six more lines...
+        #
+
+        print(answer, file=OUT)
+\end{pythoncode}
+
+If you're really stuck, you can look at the answers provided.
+
+Here are the instructions to run your code.
+\begin{itemize}
+    \item To run your code interactively: \code{p.run(train101)}, and input four numbers
+        using the keyboard, one on each line. The answer will be printed immediately under
+        them.
+    \item To test it against a small data set: \code{p.test('train101', train101)}. If
+        your code has an error, you will get detailed information which might help you to
+        fix it.
+    \item To judge it against a larger data set: \code{p.judge('train101',
+        train101)}.\footnote{For \code{p.test} and \code{p.judge} the \code{'train101'} is
+        necessary because the name of the testing or judging data set must be known. For
+        \code{p.run} no data set is accessed, so the calling pattern is simpler.} Only
+        brief information is given about the success or otherwise of your code.
+\end{itemize}
+
+See \futurereference{Appendix ...} for an explanation of the status codes AC, WA, TLE and
+RTE.
+
+\Afterword\ The detailed assistance provided in this example was painstaking, so this will
+be gradually decreased over the next few problems.
+
+As you coded this problem, you might have had two questions.
+\begin{itemize}
+    \item Is this \emph{really} the best way to find the largest of four numbers?
+    \item What if there were 400 numbers instead of four?
+\end{itemize}
+
+The first question will be addressed in (reference: the next problem). The second one will
+wait, but not too much longer.
+

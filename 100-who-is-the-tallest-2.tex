@@ -1,0 +1,55 @@
+\questionheader{\theproblemnumber\ Who is the tallest (2)?}
+
+\emph{This question takes another look at \futurereference{Problem 101}.}
+
+\Question\ In the schoolyard you determine who is the tallest by standing back to back.
+Among your online friends, though, the only way to find this out is to compare numbers.
+There are four people in your group, and so when everyone has entered their height in
+centimetres, all that remains is to pick the largest number out of the list.
+
+Your program will read four numbers from \IN\ and write the largest number to \OUT.
+
+\Sample
+
+\sample{0.2}{147\\165\\171\\168}{0.2}{171}
+
+\Scratch\ Just like the earlier problem (\futurereference{Tallest person (1)}), we need to
+read four integers from \IN. But this time, instead of making a lot of comparisons between
+$a$, $b$, $c$ and $d$, we will use Python's built-in \code{max} function.
+
+If you try the following Python expressions in your shell...
+
+\begin{pythoncode}
+    max(5, 1, 2, 9)
+    max(7, 2, 5, 11, 6)
+    max(-51, 73, 33, -1, 0, 12)
+\end{pythoncode}
+
+...then you will learn with some relief that Python has pretty much solved the ``Who is
+the tallest?'' problem for us.
+
+\Solution\ Make a new function \emph{in the same file}:
+
+\begin{pythoncode}
+    def train102(IN, OUT):
+        a = int(IN.readline())
+        b = int(IN.readline())
+        c = int(IN.readline())
+        d = int(IN.readline())
+
+        answer = max(a, b, c, d)
+
+        print(answer, file=OUT)
+\end{pythoncode}
+
+Use the tag \problemtagtt\ when you test and judge your code.
+
+\Afterword\ The \pycode|max()| function can take any number of arguments, or it can find
+the maximum of a (potentially very long) list. These are details for later. But here are
+two teasers that you can run in the shell and think about.
+
+\begin{pythoncode} 
+  max(n*n for n in [-6, -4, -1, 0, 3])
+  max(len(x) for x in ["Emma", "Caitlin", "Tim"])
+\end{pythoncode}
+

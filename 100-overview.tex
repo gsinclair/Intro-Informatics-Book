@@ -1,0 +1,149 @@
+
+\chapter{Operating on a fixed set of numbers}
+
+In these problems, you will read in just one number, or a list of numbers of a known size.
+You will calculate something or somethings based on the input and write it to output.
+
+The example problems and solutions shown here demonstrate how to read numbers (integers
+and floats) from \IN\ and write results to \OUT. Note that when we write a float%
+\footnote{In computing, decimal numbers are generally called ``floats'', short for
+    ``floating point numbers'', because the location of the decimal point can float around
+    (consider 104.32 and 1.0432, for instance).}
+to \OUT, we must round it to the specified number of decimal places to ensure predictable
+output.%
+\footnote{If you use Python, or pretty much any programming language, to calculate
+  $0.1+0.2$ then you will get a surprising result. It's not Python's fault; we have to live
+  with the fact that computers, by default, don't handle decimal numbers particularly
+well.}
+
+The following lines of code demonstrate how to input and output integers and floats. 
+
+\begin{pythoncode} 
+  import learninformatics as l
+
+  def example1(IN, OUT):
+    a = int(IN.readline())
+    b = float(IN.readline())
+
+    print("a squared:", a*a, file=OUT)
+    print("b squared:", b*b, file=OUT)
+    print("b squared (2dp):", round(b*b,2), file=OUT)
+\end{pythoncode}
+
+You should enter this code, then run it, then type \pycode|l.run(example1)| in your shell.
+It will wait while you enter two numbers (an integer and a float) and will then
+immediately output the squares that the code promises.
+
+The first two problems in this chapter are complete worked examples to show input and
+output in some more context and to demonstrate some decision-making. After that, problems
+will have fewer hints as you are expected to apply the skills learned in the earlier
+problems.
+
+When you solve actual numbered problems, you will write functions with names like
+\pycode|train101|. You can then run the function interactively, as you did with
+\pycode|example1|, but you can also do something even better: run it against test data and
+judging data. The meaning of this, and how to do it, will be explained in the worked
+examples.
+
+% ---------------------------------------------------------------- 101 Classify a triangle
+
+\clearpage
+
+\questionheader{\theproblemnumber\ Classify a triangle \workedexample}
+
+\Question Read three integers representing sides of a triangle and
+determine whether the triangle is equilateral, isosceles, or scalene.
+
+\Sample
+
+\minipagesthree{\sample{0.25}{17\\14\\13}{0.25}{scalene}}
+               {\sample{0.25}{13\\13\\8}{0.25}{isosceles}}
+               {\sample{0.25}{5\\5\\5}{0.25}{equilateral}}
+
+\Solution
+
+\begin{pythoncode} 
+  def train101(IN, OUT):
+    a = int(IN.readline())
+    b = int(IN.readline())
+    c = int(IN.readline())
+
+    if a == b and a == c:
+      answer = 'equilateral'
+    elif a == b or a == c or b == c:
+      answer = 'isosceles'
+    else:
+      answer = 'scalene'
+
+    print(answer, file=OUT)
+\end{pythoncode}
+
+\Explanation\ Lines 2--4 read the three lines in \IN\ into integer variables $a$, $b$ and
+$c$. Lines 6--11 determine the answer, and Line 13 writes the answer to \OUT.
+
+This program is very much about making decisions (\pycode|if|/\pycode|elif|/\pycode|else|)
+with a small amount of data. Note the use of \pycode|and| and \pycode|or| in making the
+decisions. \pycode|elif| is short for ``else if''.
+
+Line 1 wraps this code up in a function called \pycode|train101|, which is important for
+running the code interactively and testing it against...
+
+
+% -------------------------------------------------------------- 102 Calculate a gradient
+
+\clearpage
+
+\questionheader{\theproblemnumber\ Calculate a gradient \workedexample}
+
+\Question (\#\theproblemnumber) Read four floats representing points $(x_1,y_1)$ and
+$(x_2,y_2)$ and find the \emph{gradient} of the interval $AB$, which is typically called
+$m$ and is calculated as follows:
+\[ m = \frac{\mathrm{rise}}{\mathrm{run}} = \frac{y_2 - y_1}{x_2 - x_1}.\]
+
+Output the gradient, rounded to three decimal places.  If the gradient is undefined
+(because the run is zero), output \texttt{undefined}.
+
+\Sample
+
+\minipagesthree{\sample{0.25}{5\\1\\10\\3.5}{0.25}{2.500}}
+               {\sample{0.25}{-2.76\\-1.01\\3.14159\\-10.559}{0.25}{-1.693}}
+               {\sample{0.25}{3.7\\9.5\\3.7\\17}{0.25}{undefined}}
+
+\Explanation\ The answers given reflect the following calculations:
+
+\vspace{-5mm}
+\minipagesthree{\[\frac{3.5-1}{10-5} = 2.5\]}
+               {\[\frac{-10.559 - (-1.01)}{3.14159 - (-2.76)} = -1.692594\ldots\]}
+               {\[\frac{17 - 9.5}{3.7 - 3.7} = \frac{7.5}{0}\]}
+
+
+\Solution
+
+\begin{pythoncode} 
+  def train102(IN, OUT):
+    x1 = float(IN.readline())
+    y1 = float(IN.readline())
+    x2 = float(IN.readline())
+    y2 = float(IN.readline())
+
+    rise = y2 - y1
+    run  = x2 - x1
+
+    if run == 0.0:
+      answer = 'undefined'
+    else:
+      answer = rise / run
+
+    print(round(answer,3), file=OUT)
+\end{pythoncode}
+
+\Explanation\ Lines 2--5 read the four floats from \IN\ and assign them to sensible
+variable names. Lines 7--8 calculate the rise and run, which are important values in
+determining the gradient. Lines 10--13 determine the answer, looking out for the undefined
+case. Line 15 outputs the answer to \OUT, rounding it to three decimal places as required.
+
+\Running\ The function is named \pycode|train102|, so you can:
+\begin{itemize}
+  \item Run the code interactively with \pycode|l.run(train102)|.
+  \item Test the correctness of the code against some data with \pycode|l.train(102)|.
+\end{itemize}

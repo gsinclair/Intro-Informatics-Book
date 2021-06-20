@@ -1,0 +1,55 @@
+
+\questionheader{\theproblemnumber\ Golf (1)}
+
+\Question\ Two people play a short game (nine holes) of golf, and you must write a program
+to determine the winner.
+
+Normally, the winner is the person with the lowest total score, where ``score'' means
+``number of shots required to complete all holes''. But sometimes, players prefer to count
+\emph{holes} instead of \emph{shots} to determine the winner. And this is one of those
+times.
+
+Say Jennifer won five holes, Kate won three holes, and one hole was tied. Then the result
+would be \texttt{Jennifer won by 2 holes}. If Jennifer and Kate both won four holes and
+one was tied, then we have to decide the winner by overall points, and the result might be
+\texttt{Kate won by 3 points}. If both holes and points are tied, then the result is
+\texttt{Jennifer and Kate tied}.
+
+\Input\ From \IN\ you will read data from \emph{three lines}:
+\begin{enumerate}
+  \item The names of the two players
+  \item The scores for the first player (nine integers)
+  \item The scores for the second player (nine integers)
+\end{enumerate}
+
+\Output\ To \OUT\ you will write the result, as suggested by the paragraph above.
+
+\Sample
+
+\sample{0.3}{Jennifer Kate\\5 4 5 3 3 4 6 4 5\\4 4 5 4 4 4 5 4 4}
+       {0.3}{Kate won by 1 hole}
+
+\vspace{12pt}
+\sample{0.3}{Jennifer Kate\\5 4 5 3 3 4 6 4 4\\4 4 5 4 4 4 5 4 4}
+       {0.3}{Jennifer won by 2 points}
+
+\vspace{12pt}
+\sample{0.3}{Jennifer Kate\\5 4 5 3 3 4 6 4 4\\4 4 5 4 4 4 5 4 4}
+       {0.3}{There was no winner}
+
+\note{TODO: massage the data!}
+
+\Explanation
+
+\begin{itemize}
+  \item In the first sample, Jennifer won two holes and Kate won three holes, so a winner
+    can be determined by holes alone.
+    \item In the second sample, Jennifer and Kate won three holes each, so points total
+      points need to be considered. The points for Jennifer and Kate were 38 and 40
+      respectively \note{TODO: check!}, and a lower score is better.
+    \item In the third sample, Jennifer and Kate are equal on both holes and points.
+\end{itemize}
+
+\Scratch\ Ensure you've read the notes at the start of this chapter about reading multiple
+values from one line.
+

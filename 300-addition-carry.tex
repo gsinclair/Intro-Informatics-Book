@@ -1,0 +1,80 @@
+\questionheader{\theproblemnumber\ Addition carry}
+
+\note{This exercise assumes some experience with lists.}
+
+\Question\ When two numbers are added, carry can be involved. Given two numbers, perform
+the addition using the normal primary-school algorithm and output the number of times a
+carry was performed.
+
+Both numbers provided in \IN\ will be 1--20 digits long. They will not necessarily be the
+same length.
+
+\Sample
+
+\begin{minipage}[t]{0.2\textwidth}
+  \ttfamily
+  \textbf{IN} \\
+  19526\\
+  32287
+\end{minipage} %
+\begin{minipage}[t]{0.2\textwidth}
+  \ttfamily
+  \textbf{OUT} \\
+  3
+\end{minipage}
+
+\vspace{6pt}
+\begin{minipage}[t]{0.2\textwidth}
+  \ttfamily
+  \textbf{IN} \\
+  232\\
+  51
+\end{minipage} %
+\begin{minipage}[t]{0.2\textwidth}
+  \ttfamily
+  \textbf{OUT} \\
+  0
+\end{minipage}
+
+\Explanation\ The first example involves the following additions:
+\begin{itemize}
+  \item $6+7$ (generating a carry)
+  \item $2+8+1$ (generating a carry)
+  \item $5+2+1$
+  \item $9+2$ (generating a carry)
+  \item $1+3+1$
+\end{itemize}
+
+There are three carries.
+
+The second example clearly involves no carries.
+
+\Scratch\ To solve this problem we need to look at each number as a list of (numeric)
+digits instead of a number \emph{per se}. So we read in the two numbers as strings and use
+some special code that extracts the digits.
+
+\begin{pythoncode}
+  S1 = IN.readline()            # "19526"
+  S2 = IN.readline()            # "2287"
+  A = [int(x) for x in S1]      # [1, 9, 5, 2, 6]
+  B = [int(x) for x in S2]      # [2, 2, 8, 7]
+\end{pythoncode}
+
+The code \pycode|for x in S1| iterates through each character \pycode|'1', '9', '5', '2',
+'6'| in \pycode|S1|, and of course \pycode|int(x)| converts each of those to an integer.
+Enclosing that code in \pycode|[...]| collects the generated values in a list. This kind
+of code, called a \emph{list comprehension}, is a kind of superpower that Python has,
+although it may be a bit daunting at first.
+
+For the algorithm we are presently implementing, we would really like our two digit lists
+to be in reverse order. The following code will do it.
+
+\begin{pythoncode} 
+  S1.reverse()                  # S1 is now [6, 2, 5, 9, 1]
+  S2.reverse()                  # S2 is now [7, 8, 2, 2]
+\end{pythoncode}
+
+And now the digits line up and you can move \emph{forward} through the two reversed lists.
+
+\Solution The rest of the code for this problem is an exercise for you.
+
