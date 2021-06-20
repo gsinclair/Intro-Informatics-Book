@@ -1,0 +1,163 @@
+\documentclass[11pt,a4paper]{book}
+
+\usepackage[bottom=0.9in,top=0.85in,left=1in,right=1in]{geometry}
+\usepackage{nopageno}
+\usepackage{parskip}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{textcomp}    % textquotesingle
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{minted}      % code listings
+\usepackage{tikz}        % tikz and fadings used in title page
+\usetikzlibrary{fadings}
+
+\setlength{\parskip}{\medskipamount}
+
+% ---------------------------------------------------------------- Commands
+
+\newcommand{\chaptermacro}[1]{\chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}}
+\newcommand{\questionheader}[1]{\stepcounter{problemnumber}
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}}
+
+\newcommand{\IN}{\texttt{IN}}
+\newcommand{\OUT}{\texttt{OUT}}
+
+\newcommand{\code}[1]{\texttt{\color{blue}#1}}
+
+\newcommand{\futurereference}[1]{\textbf{\color{Plum}Ref: #1}}
+\newcommand{\note}[1]{\textbf{\color{Orchid}Note: #1}}
+
+\newcommand{\Question}{\textbf{\color{purple}Question}\quad}
+\newcommand{\Note}{\vspace{6pt}\textbf{\color{purple}Note}\quad}
+\newcommand{\Input}{\vspace{6pt}\textbf{\color{purple}Input}\quad}
+\newcommand{\Output}{\vspace{6pt}\textbf{\color{purple}Output}\quad}
+\newcommand{\Sample}{\vspace{6pt}\textbf{\color{purple}Sample}\quad}
+\newcommand{\Explanation}{\vspace{6pt}\textbf{\color{purple}Explanation}\quad}
+\newcommand{\Scratch}{\vspace{6pt}\textbf{\color{purple}Scratch}\quad}
+\newcommand{\Solution}{\vspace{6pt}\textbf{\color{purple}Solution}\quad}
+\newcommand{\Notes}{\vspace{6pt}\textbf{\color{purple}Notes}\quad}
+\newcommand{\Afterword}{\vspace{6pt}\textbf{\color{purple}Afterword}\quad}
+\newcommand{\Running}{\vspace{6pt}\textbf{\color{purple}Running the code}\quad}
+
+\newcommand{\workedexample}{{\color{purple}(worked example)}}
+\newcommand{\stronghint}{{\color{purple}(strongly hinted)}}
+
+\newcounter{problemnumber}
+\newcommand{\problemtag}{train\theproblemnumber}
+\newcommand{\problemtagtt}{\texttt{\problemtag}}
+
+\newminted{python}{xleftmargin=2cm, linenos}
+\newmintinline[pycode]{python}{}
+
+\newcommand{\sample}[4]{%
+  \begin{minipage}[t]{1.2cm}
+    ~~~
+  \end{minipage} %
+  \begin{minipage}[t]{#1\textwidth}
+    \textbf{IN}\\[3pt]
+    \ttfamily
+    #2
+  \end{minipage} %
+  \begin{minipage}[t]{#3\textwidth}
+    \textbf{OUT}\\[3pt]
+    \ttfamily
+    #4
+  \end{minipage}}
+
+\newcommand{\minipagestwo}[2]{
+  \begin{minipage}[t]{0.5\textwidth}
+    #1
+  \end{minipage} %
+  \begin{minipage}[t]{0.5\textwidth}
+    #2
+  \end{minipage}}
+
+\newcommand{\minipagesthree}[3]{
+  \begin{minipage}[t]{0.33333\textwidth}
+    #1
+  \end{minipage} %
+  \begin{minipage}[t]{0.33333\textwidth}
+    #2
+  \end{minipage} %
+  \begin{minipage}[t]{0.33333\textwidth}
+    #3
+  \end{minipage}}
+
+\includeonly{
+  000-Titlepage,
+  000-Introduction,
+  100-overview,
+  100-who-is-the-tallest-1,
+  100-the-cheapest-tv,
+  100-shopping-1,
+  100-jogging-1,
+  100-who-is-the-tallest-2,
+  100-a-fair-wage-1
+}
+
+% ------------------------------------ Document ------------------------------------
+
+\begin{document}
+
+% ----------------------------------------------- Title page, Contents, Introduction
+
+\include{000-Titlepage}
+
+\clearpage
+
+\restoregeometry
+\nopagecolor
+
+\tableofcontents
+
+\include{000-Introduction}
+
+% ---------------------------------------------------------------- Chapter 1: Basics
+
+\setcounter{problemnumber}{100}
+\include{100-overview}
+\include{100-who-is-the-tallest-1}
+\include{100-the-cheapest-tv}
+\include{100-shopping-1}
+\include{100-jogging-1}
+\include{100-who-is-the-tallest-2}
+\include{100-a-fair-wage-1}
+
+% ---------------------------------------------------------------- Chapter 2: Loops
+
+\setcounter{problemnumber}{200}
+\include{200-overview}
+\include{200-shopping-2}
+\include{200-area-calculator}
+
+% ---------------------------------------------------------------- Chapter 3: Lists
+
+\setcounter{problemnumber}{300}
+\include{300-overview}
+\include{300-shopping-3}
+\include{300-a-fair-wage-2}
+\include{300-addition-carry}
+
+% ---------------------------------------------------------------- Chapter 4: Mixed problems
+
+\setcounter{problemnumber}{400}
+\include{400-overview}
+\include{400-golf-1}
+% Several more problems to go here!
+
+% ---------------------------------------------------------------- Chapter 5: 2D data
+
+\setcounter{problemnumber}{500}
+\include{500-overview}
+\include{500-golf-2}
+
+% ---------------------------------------------------------------- END OF DOCUMENT
+
+\vspace*{10cm}
+\begin{center}
+\textbf{End of document}
+\end{center}
+
+\end{document}

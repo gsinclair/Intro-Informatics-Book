@@ -1,0 +1,58 @@
+
+\questionheader{\theproblemnumber\ Jogging (1)}
+
+\Question\ Sarah is about to take up jogging. She will start jogging $D$ metres per day
+and increase her daily distance by $I$ metres each day. When she reaches her target of $T$
+metres per day, she will stop the daily increase and just keep a consistent jogging
+pattern.
+
+How many days after she starts will she reach her target?
+
+\Input
+
+The input contains three lines, all of which are values in metres:
+\begin{itemize}
+  \item $D$, the distance at which she starts jogging;
+  \item $I$, the amount by which she increases her jog each day;
+  \item $T$, her target daily jog, after which she doesn't increase it any further.
+\end{itemize}
+
+All values are integers, and you are guaranteed that $D < D+I < T$, that is, she will have
+to apply at least two increases before reaching her target.
+
+\Output\ You will write a single integer to \OUT, that being the number of days after
+starting that she reaches her target.
+
+\Sample
+
+\minipagestwo{%
+  \sample{0.4}{100\\50\\300}
+         {0.4}{4} }{%
+  \sample{0.4}{700\\20\\750}
+         {0.4}{3} }
+
+
+\Explanation In the first sample, her running pattern over the days goes like this:
+\begin{center}
+  \begin{tabular}{cc}
+    Day & Distance (m) \\
+    1   & 100\\
+    2   & 150\\
+    3   & 200\\
+    4   & 250\\
+    5   & 300
+  \end{tabular}
+\end{center}
+
+She reaches her target on day 5, which is four days after she starts jogging, so the
+answer is \texttt{4}.
+
+In the second sample, her running pattern \emph{would} proceed 700, 720, 740, 760, but
+\SI{760}{\m} actually exceeds her target of \SI{750}{\m}, so she would in fact run
+\SI{750}{\m} on the fourth and subsequent days. In any case, she reached/exceeded her
+target on day 4, which is three days after she started, so the answer is \texttt{3}.
+
+\Scratch\ It is intended that you use simple mathematics to work this out. As a very large
+hint, consider the expression $(300 - 100)/50$ in the first sample. As another hint, be
+aware of the difference between \pycode|/| and \pycode|//| in Python.
+
