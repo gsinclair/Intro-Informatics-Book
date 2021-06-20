@@ -1,190 +1,111 @@
 
-\chapter{Problems 5xx: two-dimensional data}
 
-Intro text...
+\chapter{Problems 4xx: miscellaneous problems}
 
-% ---------------------------------------------------------------- Cash grab (1)
+There are no new skills in this chapter, just a range of problems for you to try.
 
-\clearpage
+There is one new thing to learn about reading input, however, and that is \textbf{reading
+multiple inputs on the same line}. Problem 401 below demonstrates this.
 
-\questionheader{\theproblemnumber\ Cash grab (1)}
 
-Behind the gates of the walled city \emph{Adventis} lies an enormous $8 \times 10$ board
-with 80 tiles, each one of them filled with coins. You are invited to choose which tile
-to stand on and will be given one minute to scoop up as much cash as you can. Taking a
-look from on high, you reason that wherever you stand, one minute will only afford you
-enough time to get the cash on that tile and on all the immediately surrounding tiles.
-That is, nine tiles in total.
+% ---------------------------------------------------------------- Name, age, hourly rate
 
-On a scrap of paper, you jot down your estimate of how much cash is on each tile, and you
-have only moments to decide where you will be placed.
+\questionheader{\theproblemnumber\ Name, age and hourly rate}
 
-\Input Eight rows of ten non-negative integers, each representing the cash amount on one
-tile. The rows are numbered 1--8 and the columns 1--10, but these do not appear in the input.
-
-For simplicity's sake, as this is your first exposure to two-dimensional data, all border
-tiles will have a value of \texttt{0}.
-
-\Output Two numbers \texttt{row col} identifying the most profitable place to stand.
+There is no ``question'' here, really. You will simply read data about multiple people
+from three lines of \IN, and write that data to \OUT\ in a more readable format. In so
+doing, you will learn how to read multiple values from one line, and how to use Python's
+format strings.
 
 \Sample
 
-\sample{0.5}{0 0 0 0 0 0 0 0 0 0\\
-             0 1 2 1 3 2 4 3 1 0\\
-             0 4 1 2 1 3 0 2 0 0\\
-             0 0 5 0 3 2 1 3 1 0\\
-             0 2 7 8 5 4 2 0 3 0\\
-             0 1 6 3 4 2 0 0 5 0\\
-             0 3 0 2 2 1 2 2 3 0\\
-             0 0 0 0 0 0 0 0 0 0}
-       {0.2}{5 4}
+\sample{0.3}{James Lynne Toni Gerard\\
+             23 21 20 21\\
+             18.5 21.25 22.30 21}
+       {0.6}{James is 23 years old and earns \$18.50 per hour\\
+             Lynne is 21 years old and earns \$21.00 per hour\\
+             Toni is 20 years old and earns \$22.30 per hour\\
+             Gerard is 21 years old and earns \$21.00 per hour}
 
-\Explanation\ The location $(5,4)$ (in row-column notation) is the square with value
-\texttt{8}, and the nine cells within reach are \texttt{5 0 3 7 8 5 6 3 4}, which clearly
-produces a higher total than any other starting cell.%
-\footnote{We can see the answer by eye in this case, but with different data it would not
-be so easy.}
+\Scratch\ To read multiple items from one line, we use Python's \pycode|split()| function.%
+\footnote{Technically, \pycode|split()| is a \emph{method} of the \pycode|String| class.
+That's more detail than we want at the moment. We'll think of it as a \emph{function} that
+acts directly on string objects.}
+If you try \pycode|"one two three four".split()| you'll get the idea of what
+\pycode|split()| does.
 
-\Scratch\ We need to simulate standing in many different places and counting the
-surrounding cash, and keep a running ``best location''. How many places do we need to try?
-Well, the zeros on the outside mean there's no point standing on them. There's no point
-standing \emph{next to} a row or column of zeros either, so that means we try all
-locations in the rectangle $(2,2)$--$(8,8)$.
-
-But first, we need to load the data in. We will create a list called \texttt{DATA} which
-is really a list of \emph{rows}, each of which is a list of values. That is, when we're
-done, we'll have (referring to the sample data):
-
+So the four names in the sample can be read with:
 \begin{pythoncode}
-  DATA == [[0,0,0,0,0,0,0,0,0,0],    # Row 1 (index 0)
-           [0,1,2,1,3,2,4,3,1,0],    # Row 2 (index 1)
-           [0,4,1,2,1,3,0,2,0,0],    # Row 3 (index 2)
-           # ...
-           [0,0,0,0,0,0,0,0,0,0]]    # Row 10 (index 9)
+  names = IN.readline().split()
+             # -> ['James', 'Lynne', 'Toni', 'Gerard']
 \end{pythoncode}
 
-Thus we have two-dimensional data as a list of lists. If we want to access the \texttt{4}
-at row 2, column 7, then we use \pycode|DATA[1][6]|, noting zero-based indexing. Just
-typing \pycode|DATA[2]| gives us the entirety of row 3.
-
-Here is a way to get the values from \IN\ into our variable \pycode|DATA|.
-
+The ages and hourly rates, however, need to be converted to integers and floats:
 \begin{pythoncode}
-  DATA = []                # Start with an empty list and append each row.
-  for i in range(8):
-    row = [int(x) for x in IN.readline().split()]
-    DATA.append(row)
+  ages  = [int(x) for x in IN.readline().split()]
+             # -> [23, 21, 20, 21]
+
+  rates = [float(x) for x in IN.readline().split()]
+             # -> [18.5, 21.25, 22.3, 21.0]
 \end{pythoncode}
 
-Now to actually access all the data we want, from $(2,2)$ down to $(6,8)$, we can use a
-loop within a loop. This is the normal way to deal with two-dimensional data.
+These are using Python's superpower, list comprehensions, which enable us to transform one
+list---say, \pycode|['23', '21', '20', '21']|---into another, like \pycode|[23, 21, 20,
+21]|.
 
-\begin{pythoncode}
-  for row in range(2,7):
-    for col in range(2,9):
-      print(f'Row {row+1}, Column {col+1}: {DATA[row][col]}')
-\end{pythoncode}
+You have two choices when it comes to understanding the above code:
+\begin{enumerate}
+  \item Memorise how to read multiple strings or ints or floats from one line, and leave
+    it at that; or
+  \item Understand fully how the code works so that you can use list comprehensions to
+    power up your own code.
+\end{enumerate}
 
-It is worth trying this code to ensure you know what it does and why. Note that we are
-translating between the 0-based indexing of lists and the 1-based language of the problem.
-
-The double-loop above simulates standing in the 49 different locations from $(2,2)$ to
-$(6,8)$. So what do we want to do in each location? We want to count all the cash in that
-location and its eight neighbours.
-
-\begin{pythoncode}
-  for row in range(2,7):
-    for col in range(2,9):
-      cash = DATA[row-1][col-1] + DATA[row-1][col] + DATA[row-1][col+1] + \
-             DATA[row]  [col-1] + DATA[row]  [col] + DATA[row]  [col+1] + \
-             DATA[row+1][col-1] + DATA[row+1][col] + DATA[row+1][col+1]
-\end{pythoncode}
-
-With code like that, we might prefer to use \texttt{r} and \texttt{c} instead of
-\texttt{row} and \texttt{col}. That will appear in the solution.
-
-More than just count the cash, though, we need to see whether this is the best cash amount
-we've encountered so far, and if so, remember where it is. For that we will use two
-variables: \texttt{bestcash} and \texttt{location}. We will store the location as a
-(row,column) pair.%
-\footnote{Python conveniently allows us to store pairs or triples or ... of values in
-round brackets. These are called \emph{tuples}, and once you've created them you can't
-change them. You'll learn why not when you encounter the \emph{dictionary} data type.}
+The choice is yours, but you \emph{must} do at least \#1 above.
 
 \Solution
 
 \begin{pythoncode}
-  def train501(IN, OUT):
-    DATA = []
-    for i in range(8):
-      row = [int(x) for x in IN.readline().split()]
-      DATA.append(row)
-    
-    bestcash = 0
-    location = (0,0)
+  def train401(IN, OUT):
+    names = IN.readline().split()
+    ages  = [int(x)   for x in IN.readline().split()]
+    rates = [float(x) for x in IN.readline().split()]
 
-    for r in range(2,7):
-      for c in range(2,9):
-        cash = DATA[r-1][c-1] + DATA[r-1][c] + DATA[r-1][c+1] + \
-               DATA[r]  [c-1] + DATA[r]  [c] + DATA[r]  [c+1] + \
-               DATA[r+1][c-1] + DATA[r+1][c] + DATA[r+1][c+1]
-        if cash > bestcash:
-          # We have a new potential answer.
-          bestcash = cash
-          location = (r+1, c+1)
-
-    row, column = location
-    print(row, column, file=OUT)
+    for i in range(len(names)):
+      rate = round(rates[i],2)
+      text = f'{names[i] is {ages[i]} years old and earns ${rate} per hour'
+      print(text, file=OUT)
 \end{pythoncode}
 
-\Explanation\ Much of the code was explained in \emph{Scratch} above. In Lines 7--8 we
-initialise the two variables that help us find the best location, and in Lines 15--18 we
-use them. In Line 18 we add 1 to the row and column because that is the numbering system
-used in the problem. In Line 20 we \emph{unpack the tuple} into its two individual values
-so that we can print them out with a space between. If we had called
-\pycode|print(location)| then the output would be \texttt{(5,4)}.
-
-
-% ---------------------------------------------------------------- Cash grab (2)
-
-\clearpage
-
-\questionheader{\theproblemnumber\ Cash grab (2)}
-
-The question is the same as \emph{Cash grab (1)} but the board size is now variable. The
-first line of \IN\ will contain the values $R$ and $C$, the number of rows and columns,
-respectively. Following this will be $R$ lines, each containing $C$ non-negative integers.
-
-\Sample
-
-\sample{0.3}{...}
-       {0.6}{...}
-
-\Solution
+\Afterword Using another list comprehension, we can do all the float rounding in one go.
+Here is a more sophisticated solution. Note Lines 5 and 8.
 
 \begin{pythoncode}
-  def train501(IN, OUT):
-    pass
+  def train401(IN, OUT):
+    names = IN.readline().split()
+    ages  = [int(x)   for x in IN.readline().split()]
+    rates = [float(x) for x in IN.readline().split()]
+    rates = [round(x,2) for x in rates]
+
+    for i in range(len(names)):
+      text = f'{names[i] is {ages[i]} years old and earns ${rates[i]} per hour'
+      print(text, file=OUT)
 \end{pythoncode}
 
-
-% ---------------------------------------------------------------- Cash grab (3)
-
-\clearpage
-
-\questionheader{\theproblemnumber\ Cash grab (3)}
-
-Variable size.
-
-\Sample
-
-\sample{0.3}{...}
-       {0.6}{...}
-
-\Solution
+Also, we can push formatted strings further to create a nice tabular output. This will not
+pass the test for problem \theproblemnumber, so it's named differently, but you can still
+run it with \pycode|l.run(train401a)| and provide your own data.
 
 \begin{pythoncode}
-  def train501(IN, OUT):
-    pass
+  def train401a(IN, OUT):
+    names = IN.readline().split()
+    ages  = [int(x)   for x in IN.readline().split()]
+    rates = [float(x) for x in IN.readline().split()]
+    rates = [round(x,2) for x in rates]
+
+    print(f"{'Name:12} {'Age':>6} {'Rate:>7}", file=OUT)
+    for i in range(len(names)):
+      text = f'{names[i]:12} {ages[i]:>6} {rates[i]:>7}'
+      print(text, file=OUT)
 \end{pythoncode}
 
