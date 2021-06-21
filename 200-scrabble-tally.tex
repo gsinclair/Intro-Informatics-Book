@@ -1,0 +1,29 @@
+
+\questionheader{\theproblemnumber\ Scrabble tally}
+
+\Question\ Four friends---Albert, Betty, Charlie and Dotty---have played a lot of Scrabble
+games over the years. The competition has been pretty close, but they've all kind of
+forgotten who has won how many games. Luckily, when moving house recently, Dotty unearthed
+a long list of the winners of all their games! By processing this list, you will be able
+to give them a full tally.
+
+\Input\ The first line of \IN\ contains $N$, the number of winners listed. Following this
+are $N$ lines, each of which contains the name \texttt{Albert}, \texttt{Betty},
+\texttt{Charlie} or \texttt{Dotty}, representing the winner of one game.
+
+\Output\ \OUT\ contains four lines, reporting a tally as seen in the sample.
+
+\Sample
+
+\sample{0.25}{10\\Dotty\\Albert\\Albert\\Charlie\\Dotty\\Albert\\Dotty\\Dotty\\Dotty\\Charlie}
+       {0.2}{Albert: 3\\Betty: 0\\Charlie: 2\\Dotty: 5}
+
+\Scratch\ In this problem, you are reading \emph{strings} for the first time. ``String''
+is the computer-science word for textual data, presumably because the characters are
+``strung'' together. To read a string, we could simply call \pycode|IN.readline()|, with
+no \pycode|int(...)| or \pycode|float(...)| wrapper because we certainly do not want
+Python to attempt to convert our names to numbers.
+
+There's a sting quite literally in the tail, though, because when we read a line of data
+from \IN, the resulting string has a newline character at the end, and we don't really
+want that.
