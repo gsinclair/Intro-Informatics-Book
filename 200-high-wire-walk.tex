@@ -34,7 +34,26 @@ which Philippe can walk.
 
 \Sample
 
-\sample{0.4}{12\\80\\100\\50\\60\\90\\110\\20\\50\\40\\70\\130\\110\\70}
-       {0.4}{4}
+\minipagesthree{%
+  \sample{0.3}{12\\80\\100\\50\\60\\90\\110\\20\\50\\40\\70\\130\\110\\70}
+         {0.3}{4} }{%
+  \sample{0.3}{6\\80\\100\\70\\90\\20\\20\\20}
+         {0.3}{1} }{%
+  \sample{0.3}{6\\80\\20\\20\\100\\100\\20\\20}
+         {0.3}{0} }
 
-\Explanation\ The sample data matches the scenario given in the example.
+
+\Explanation\ The first sample data matches the scenario given in the example.
+
+In the second sample, the greatest number of suitably small buildings are all the way to
+the right, so they can't be used. That leaves the small interval of 1 unit in the middle
+as the answer.
+
+In the third sample, the buildings to the left and right of the two towers in the middle
+can't be used, and the answer is zero: there is nowhere in this sceanario where Philippe
+can perform his high-wire act.
+
+\Note\ The second and third samples above are what might be called ``interesting'' data,
+or, to use a term of art, ``pathological'' data that is designed to fail. Such data can
+appear in many Informatics problems but it is not usually revealed in the samples: you
+have to force yourself to consider it in order to solve the problem fully.
