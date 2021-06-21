@@ -1,0 +1,56 @@
+
+\questionheader{\theproblemnumber\ Drought}
+
+\Question\ \grey{(Sourced from ORAC)}\quad Years of drought have hit rural Australia hard.
+With catchment levels at an all time low, you decide to purchase a rainwater tank. Soon
+the winter rains arrive, and the tank slowly begins to fill.
+
+You begin to wonder just when your tank will be entirely full. A friend
+in the weather bureau has kindly lent you rainfall predictions for the next few days.
+Given these predictions, and the size of your rainwater tank, write a program to determine
+how many days your tank takes to fill.
+
+\Input\ The first two lines of the input file will contain the values $N$ and $C$, where
+$N$ is the number of days the weather predictions last, and $C$ is the capacity of your
+rainwater tank in litres.  You are guaranteed that $1 \le N \le 1000$, and that $C$ is a
+positive integer no greater than the total amount of rain that falls over the $N$ days.
+
+The remaining $N$ lines of input will describe the rainfall levels for each day in order.
+Each line will contain a single integer between 0 and 1\,000\,000: the amount of rain (in
+litres) that will fall over your rainwater tank that day.
+
+\Output\ Your output should consist of a single integer: the number of days until your
+rainwater tank fills.
+
+\Sample
+
+\minipagestwo{%
+  \sample{0.4}{6\\10\\2\\3\\3\\2\\2\\4}
+         {0.4}{4} }{%
+  \sample{0.4}{6\\11\\2\\3\\3\\2\\2\\4}
+         {0.4}{5} }
+
+
+\Explanation\ In both examples, the total rainfall changes as follows:
+
+\begin{center}
+\begin{tabular}{cc}
+  \textbf{Day} & \textbf{Running total (L)} \\[3pt]
+  1 & 2 \\[1pt]
+  2 & 5 \\[1pt]
+  3 & 8 \\[1pt]
+  4 & 10 \\[1pt]
+  5 & 12 \\[1pt]
+  6 & 16 \\[1pt]
+\end{tabular}
+\end{center}
+\vspace{12pt}
+
+Hence a 10-litre water tank is full after 4 days and an 11-litre water tank is full after
+5 days.
+
+\Scratch\ If you intialise a variable to track the running total to zero at the beginning
+and keep it updated as you read in the data, you should be able to solve this.
+
+Good to know: you can \pycode|break| out of a \pycode|for| loop just like you can a
+\pycode|while| loop.
