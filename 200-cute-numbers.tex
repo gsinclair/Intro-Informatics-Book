@@ -1,0 +1,36 @@
+
+\questionheader{\theproblemnumber\ Cute numbers}
+
+\Question\ \grey{(Sourced from ORAC)}\quad For you, numbers have personalities. The number
+4 is elegant, 18 is strong and 42 is enigmatic.  And, of course, any number ending in 0 is
+cute.  The more zeroes at the end of a number, the cuter that number is. Therefore $70$,
+$36\;640$ and $1\;800\;090$ are only a little bit cute (ending in just one zero), whereas
+400 and $99\;200$ are very cute (ending in two zeroes) and $30\;000$ is really really cute
+(ending in four zeros).
+
+Your task is to read in a number $N$ and determine how many zeros are at the end of that
+number, so you can tell just how cute the number is.
+
+\Input\ The first line of input will consist of the single integer $d$, telling you how
+many digits are in the number $N$. You are guaranteed that $1 \le d \le 100\,000$.
+
+Following this will be $d$ additional lines, each containing a single digit (0, 1, 2, 3,
+4, 5, 6, 7, 8 or 9). These will be the digits of $N$, written from left to right. You are
+guaranteed that the first digit of $N$ will not be zero.
+
+\Output\ You must write a single integer as output, representing the number of zeroes at
+the end of $N$.
+
+\Sample
+
+\minipagestwo{%
+  \sample{0.4}{5\\9\\9\\2\\0\\0}
+         {0.4}{2} }{%
+  \sample{0.4}{7\\1\\9\\0\\0\\0\\9\\0}
+         {0.4}{1} }
+
+
+\Explanation The first example describes $N = 99\;200$, which ends in two zeros. The second
+example describes $N = 1\;800\;090$, which contains many zeroes within but has only one zero
+at the end.
+

@@ -1,0 +1,40 @@
+
+\questionheader{\theproblemnumber\ High-wire walk}
+
+\Question\ Philippe the high-wire artist is planning his next audacious high-wire walk in
+New York City. He wants to walk over as many buildings as possible, but at a prescribed
+height.
+
+Fortunately, he has a list of consecutive building heights and he wants you to assist in
+finding the best option for his walk.
+
+For example, say there are 12 buildings in the list and Philippe wants to walk at a height
+of 80 metres. Then the possible options are highlighted below.\[
+  100 \quad
+  \mathbf{50} \quad \mathbf{60} \quad
+  90 \quad 110 \quad
+  \mathbf{20} \quad \mathbf{50} \quad \mathbf{40} \quad \mathbf{70} \quad
+  130 \quad 110 \quad 70
+\]
+
+Note that the 70 at the end is not highlighted because there is no tall building to the
+right of it that can be used as an anchor.
+
+The best option for Philippe in this scenario is to walk over four buildings.
+
+\Input\ The first two lines contain the integers $N$ and $H$, which represent the number
+of buildings in the list and the height at which Philippe wants to walk.
+
+Following that are $N$ positive integers representing the heights $B_i$ of the buildings.
+
+You are guaranteed that $5 \le N \le 1000$, $10 \le H \le 500$ and $10 \le B_i \le 1000$.
+
+\Output\ You will output one non-negative integer: the largest number of buildings over
+which Philippe can walk.
+
+\Sample
+
+\sample{0.4}{12\\80\\100\\50\\60\\90\\110\\20\\50\\40\\70\\130\\110\\70}
+       {0.4}{4}
+
+\Explanation\ The sample data matches the scenario given in the example.

@@ -1,0 +1,44 @@
+
+\questionheader{\theproblemnumber\ Jogging (2)}
+
+\Question\ Sarah is about to take up jogging. She will start jogging $D$ metres per day
+and increase her daily distance by $I$ metres each day. When she reaches her target of $T$
+metres per day, she will stop the daily increase and just keep a consistent jogging
+pattern.
+
+Find the total distance she jogs in $N$ days.
+
+\Input
+
+The input contains four lines.
+\begin{itemize}
+  \item $D$, the distance (m) at which she starts jogging;
+  \item $I$, the amount by which she increases her jog each day (m);
+  \item $T$, her target daily jog (m), after which she doesn't increase it any further.
+  \item $N$, the number of days for which we will calculate the total distance.
+\end{itemize}
+
+All values are integers, and you are guaranteed that $D < D+I < T$, that is, she will have
+to apply at least two increases before reaching her target.
+
+\Output\ You will write a single integer to \OUT: the total distance she jogs in $N$ days.
+
+\Sample
+
+\minipagestwo{%
+  \sample{0.4}{100\\50\\2000\\6}
+         {0.4}{1350} }{%
+  \sample{0.4}{700\\20\\750\\6}
+         {0.4}{4410} }
+
+
+\Explanation In the first sample, over the first six days, Sarah runs a total of
+$100+150+200+250+300+350=1350$ metres.
+
+In the second sample, over the first six days, Sarah runs a total of
+$700+720+740+750+750+750=4410$ metres.
+
+\Scratch\ It is intended here that you sum the distances in a loop. It is possible to work
+these out using mathematical formulas, but that is: (a) complicated; and (b) counter to
+the spirit of this chapter.
+
