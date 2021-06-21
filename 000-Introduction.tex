@@ -74,7 +74,7 @@ will add the following to \texttt{main.py}:%
 \end{pythoncode}
 
 When you \emph{Run} your code, nothing will happen, because all you have is a bunch of
-definitions. But in the \emph{Console} you can type \pycode|l.samples(205)| and it will
+definitions. But in the \emph{Console} you can type \pycode|l.test(205)| and it will
 execute your code in \pycode|ex205| and provide it with the sample input data (specified
 in the exercise) and check that the code produces the correct output. When you are getting
 correct results for the sample data, you will type \pycode|l.judge(205)| to see if your
@@ -94,60 +94,17 @@ Here are example commands and what they do:
                               input from the keyboard and sending output to the
                               screen.\\[3pt]
     \texttt{l.run(example)} & Run your function \texttt{example} interactively.\\[3pt]
-    \texttt{l.samples(205)} & Run your function \texttt{ex205}, using the sample data
+    \texttt{l.test(205)}    & Run your function \texttt{ex205}, using the sample data
                               set(s) as input and checking that your code generates
                               the correct output.\\[3pt]
     \texttt{l.judge(205)}   & Run your function \texttt{ex205} multiple times, using a
                               variety of (secret) data sets and checking that your code
                               generates the correct output in all cases.\\
+    \midrule
+    \texttt{l.info()}       & Show some information about the learninformatics
+                              environment: software version, data version, available
+                              exercises.\\
+    \texttt{l.update()}     & Update to the latest available data.\\
     \bottomrule
   \end{tabular}
 \end{center}
-
-%%% \section*{Old introduction text}
-%%% 
-%%% The exercises in this document will enable you to progress from absolute informatics
-%%% novice to a level of confidence sufficient to tackle elementary problems on
-%%% ORAC\footnote{ORAC is an online judge found at orac2.info. Many other online judges exist,
-%%% such as dmoj.ca, hackerrank.com, and so on. ORAC has excellent problems, but its
-%%% input/output system is a pain, especially for beginners, and its entry-level problems,
-%%% while very easy, are still too hard for complete beginners.}, such as \emph{Cute Numbers},
-%%% \emph{Ladybugs}, and \emph{Drought}.
-%%% 
-%%% These exercises are self-contained and do not involve submitting code to a website. You
-%%% do, however, need to set up your Python coding environment a little. This up-front
-%%% inconvenience pays off very quickly, though, as you can:
-%%% \begin{itemize}
-%%%   \item Solve all problems in one file.
-%%%   \item Run your code interactively, or test it against known data, or have it judged
-%%%     against secret data, all with ease.
-%%% \end{itemize}
-%%% 
-%%% \emph{Describe the PLC Informatics system, or refer to Appendix A or whatever...}
-%%% 
-%%% The problems in Series 100 are generally original, though some inspiration naturally comes
-%%% from easy problems I've seen before. They have only a modicum of context, unlike later
-%%% informatics problems that require you to read paragraphs of text to discern exactly what
-%%% the problem is. Some problems will even give you some or all of the code required to solve
-%%% them! The aim is for you to experience a minimum of friction in the early part of your
-%%% learning.
-%%% 
-%%% \emph{Idea: mention here that we want to get right into it, but if you are reading this
-%%% with some interest but wondering what it's actually all about, please see Appendix A
-%%% ``What is informatics anyway?''}
-%%% 
-%%% For ease of navigating the document, problems appear one per page. Please turn over and
-%%% begin.
-
-\section*{Problems to develop}
-\begin{itemize}
-  \item Input \texttt{940 5 . + 30 . -5 . + 100 . + 12 . - 4} representing a starting
-    value and a series of additions and subtractions. Output \texttt{940 . 970 . 965 .
-    1065 . 1077 . 1073} representing the starting value, the intermediate values, and the
-    answer. Story can be something like profits and losses each week, and wanting to see
-    that the business is afloat. Perhaps if an intermediate value is negative, the output
-    can include a warning alongside it.
-  \item Find the length of a Collatz chain starting at a given number.
-  \item Find which starting number between $A$ and $B$ produces the longest Collatz chain.
-  \item Cute numbers
-\end{itemize}

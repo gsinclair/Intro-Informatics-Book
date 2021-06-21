@@ -107,7 +107,7 @@ After you have \emph{Run} your code in replit.com, try the following in the cons
   \item \pycode|l.run(101, "15\n19\n20\n")|. This puts the data in directly, instead of
     waiting for you to type it. The answer \texttt{scalene} should immediately be
     displayed.
-  \item \pycode|l.samples(101)|. This runs your code against the three samples shown
+  \item \pycode|l.test(101)|. This runs your code against the three samples shown
     above and checks that the correct output is produced. If the output is incorrect, or
     if an error occurs, a helpful report is printed so you can try to work out what went
     wrong.
@@ -143,14 +143,14 @@ Output the gradient, rounded to three decimal places.  If the gradient is undefi
 
 \Sample
 
-\minipagesthree{\sample{0.25}{5\\1\\10\\3.5}{0.25}{2.500}}
-               {\sample{0.25}{-2.76\\-1.01\\3.14159\\-10.559}{0.25}{-1.693}}
-               {\sample{0.25}{3.7\\9.5\\3.7\\17}{0.25}{undefined}}
+\minipagesthree{\sample{0.4}{5\\1\\10\\3.5}{0.2}{0.5}}
+               {\sample{0.4}{-2.76\\-1.01\\3.14159\\-10.559}{0.2}{-1.693}}
+               {\sample{0.4}{3.7\\9.5\\3.7\\17}{0.2}{undefined}}
 
 \Explanation\ The answers given reflect the following calculations:
 
 \vspace{-5mm}
-\minipagesthree{\[\frac{3.5-1}{10-5} = 2.5\]}
+\minipagesthree{\[\frac{3.5-1}{10-5} = 0.5\]}
                {\[\frac{-10.559 - (-1.01)}{3.14159 - (-2.76)} = -1.692594\ldots\]}
                {\[\frac{17 - 9.5}{3.7 - 3.7} = \frac{7.5}{0}\]}
 
@@ -168,11 +168,10 @@ Output the gradient, rounded to three decimal places.  If the gradient is undefi
     run  = x2 - x1
 
     if run == 0.0:
-      answer = 'undefined'
+      print('undefined', file=OUT)
     else:
       answer = rise / run
-
-    print(round(answer,3), file=OUT)
+      print(round(answer,3), file=OUT)
 \end{pythoncode}
 
 \Explanation\ Lines 2--5 read the four floats from \IN\ and assign them to sensible
@@ -183,6 +182,6 @@ case. Line 15 outputs the answer to \OUT, rounding it to three decimal places as
 \Running\ The function is named \pycode|ex102|, so you can:
 \begin{itemize}
   \item Run the code interactively with \pycode|l.run(102)|.
-  \item Test the correctness of the code against some data with \pycode|l.samples(102)|
-    and \pycode|l.judge(102)|.
+  \item Test the correctness of the code against the sample data with \pycode|l.test(102)|
+    and against other judging data with \pycode|l.judge(102)|.
 \end{itemize}
