@@ -1,0 +1,257 @@
+
+\chapter{Looping to solve problems}
+
+In Chapter \futurereference{2, or whatever}, you learned to code \emph{loops} for the
+purpose of reading an arbitrary number of lines of data. But the problems you solved were
+still quite direct in nature. For example, you might read many lines like \texttt{circle}
+followed by \texttt{40}, but the act of calculating $\pi(40)^2$ is still very
+straightforward.
+
+In this chapter we will generally read a small fixed amount of data but will need to use
+loops to solve the problem itself. This is something that beginners tend to find very
+difficult. So let's break it down with two simple examples that will be developed fully in
+the first two problems:
+\begin{itemize}
+  \item How many factors does a number (42, say) have? The simplest way to answer this
+    question is to consider every possible number between 1 and 42 (inclusive) and count
+    how many of them divide 42 evenly, which in computing terms means leaving a remainder
+    of zero. Thankfully, Python makes it easy to operate on the number 1, then the number
+    2, then 3, and so on until we reach 42.
+  \item How far does Sarah%
+    \footnote{See \futurereference{Jogging (1)} if you haven't already}
+    run in (say) 100 days, given she runs \SI{500}{\m} on the first day and
+    increases her run by \SI{75}{\m} each day thereafter until she reaches \SI{1500}{\m}
+    per day? Clearly, her running pattern over time will be \[
+      500, 575, 650, \ldots, 1325, 1400, 1475, 1500, 1500, 1500, \ldots
+    \] and we need to add 100 terms of that sequence. So we are doing \emph{something} 100
+    times (adding a number to a running total, which begins at zero), but the details (how
+    much we add) potentially changes each time.
+\end{itemize}
+
+Before we get stuck in to those two problems, we see below \textbf{two ways} of looping to
+do something really simple: list the 12 times tables up to 5.
+
+\begin{pythoncode}
+  def times_tables_example_1():
+    n = 1
+    while n < 6:
+      print(f'12 x {n} = {12*n}')
+      n = n + 1
+    print('Done')
+\end{pythoncode}
+
+If you type this in and run your code, you can then run \pycode|times_tables_example_1()|
+in the shell and see the output:
+
+\begin{quote}
+  \begin{verbatim}
+    12 x 1 = 12
+    12 x 2 = 24
+    12 x 3 = 36
+    12 x 4 = 48
+    12 x 5 = 60
+    Done
+  \end{verbatim}
+\end{quote}
+
+In the code above, $n$ is a \emph{loop counter} that takes on the values 1, 2, 3, 4, 5. It
+takes on these values because we explicitly set it to 1, then the loop runs so long as $n
+< 6$, and we explicitly increment it each time the loop runs. Thus Lines 4--5 (the
+\emph{loop body}) run five times, controlled by the \emph{loop condition} on Line 3. When
+the loop condition decides enough is enough (that is, the condition $n < 6$ becomes
+\pycode|False|), control passes to Line 6, and the code then finishes.
+
+The description above makes two mentions of the variable $n$ being manipulated
+\emph{explicitly}. Python offers an \emph{implicit} alternative, where we basically say
+``I want $n$ to range from 1 to 5'' and the low-level details are taken care of for us.
+This is demonstrated in the code below.
+
+\begin{pythoncode}
+  def times_tables_example_2():
+    for n in range(1,6):
+      print(f'12 x {n} = {12*n}')
+    print('Done')
+\end{pythoncode}
+
+The output from our two code listings is exactly the same. Beginners often prefer the
+first style because you can see everything that is happening. It doesn't take long until
+they prefer the second style, though, because looping is such a common occurence in
+programs that we tend to appreciate it being supported directly.
+
+Note that \pycode|range(1,6)| produces the values $1,2,3,4,5$ as we wish. It's known as an
+inclusive-exclusive range: the first value (1) is \emph{included}; the second value (6) is
+\emph{excluded}. There are good reasons for this that won't be detailed here.%
+\footnote{Consider that, in a sense, \pycode|range(10,25) + range(25,30) == range(10,30)|}.
+
+Here are a few more code snippets that you can run if you like to get a bit more
+experience with how \pycode|for| loops work.
+
+\begin{pythoncode}
+  def for_loop_examples():
+    for x in range(-8,9):
+      print(f'{x} squared is {x*x}')
+
+    for name in ['Steven', 'Peta', 'Jessica']:
+      print(f'Hi {name}!!!')
+
+    for m in range(5):
+      print(f"This is printed five times. I don't about m, but m = {m}")
+
+    import time
+    for t in range(4,20,3):
+      print(f'Sleeping for {t*100} milliseconds')
+      time.sleep(t * 100)
+\end{pythoncode}
+
+As shown above, \pycode|range| can take either one, two or three arguments. To be clear:
+
+\begin{center}
+  \begin{tabular}{ll}
+    Call this... & ...and you'll get...\\
+    \pycode|range(5)|       & $0,1,2,3,4$ \\
+    \pycode|range(3,9)|     & $3,4,5,6,7,8$ \\
+    \pycode|range(4,14,2)|  & $4,6,8,10,12$ \\
+    \pycode|range(10,0,-1)| & $10,9,8,7,6,5,4,3,2,1$ \\
+  \end{tabular}
+\end{center}
+
+Just for fun, we can finish this introduction with a blast off, implemented two ways.
+
+\begin{pythoncode}
+  def blastoff_1():
+    import time
+    for n in range(10,0,-1):
+      print(n)
+      time.sleep(1000)
+    print("Blast off!!!")
+
+  def blastoff_2():
+    import time
+    n = 10
+    while n > 0:
+      print(n)
+      time.sleep(1000)
+      n = n - 1
+    print("Blast off!!!")
+\end{pythoncode}
+
+
+% ---------------------------------------------------------------- Cash grab (1)
+
+\clearpage
+
+\questionheader{\theproblemnumber\ How many factors? \workedexample}
+
+\Question\ Given a positive number $N$, determine how many factors it has.
+
+\Input\ A single integer $N>0$.
+
+\Output\ A single integer representing the number of factors of $N$.
+
+\Sample
+
+\minipagesthree{%
+  \sample{0.3}{12}{0.3}{6}
+}{%
+  \sample{0.3}{441}{0.3}{9}
+}{%
+  \sample{0.3}{73}{0.3}{2}
+}
+
+\Explanation\ The number 12 has six factors: $1,2,3,4,6,12$. The number 441 has 9 factors:
+$1,3,7,9,21,49,63,,147,441$. The prime number 73 has two factors: $1,73$.
+
+\Scratch\ To get the factors of 12, we will consider every number from 1 to 12.%
+\footnote{If we were smarter, we'd consider 1 to 6, then count 12 as an automatic factor.
+  And there's an even smarter way than that!  But we're going for simplicity here.}
+Here is a logical setting out of what needs to be done. First of all, initialise
+\emph{count} to zero. Then let $f$ (called $f$ because it's a potential factor) take on
+values 1 to 12 as the table shows.
+
+\begin{center}
+  \begin{tabular}{clc}
+    \toprule
+    \bi{f} & \textbf{factor of 12?} & \bi{count} \\
+    \midrule
+    1  & \pycode|True|  & 1  \\
+    2  & \pycode|True|  & 2  \\
+    3  & \pycode|True|  & 3  \\
+    4  & \pycode|True|  & 4  \\
+    5  & \pycode|False| &    \\
+    6  & \pycode|True|  & 5  \\
+    7  & \pycode|False| &    \\
+    8  & \pycode|False| &    \\
+    9  & \pycode|False| &    \\
+    10 & \pycode|False| &    \\
+    11 & \pycode|False| &    \\
+    12 & \pycode|True|  & 6  \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+When the loop has completed, we have $count = 6$ and that is the answer we write to \OUT.
+
+Here is a pseudo-code%
+\footnote{Pseudo-code is simply code \emph{ideas} expressed in general without using a
+  specific programming language.}
+algorithm for what we need to do.
+
+\begin{quote}
+  \begin{verbatim}
+    set Count to 0
+    foreach f in 1..12 {
+      if f is a factor of 12 {
+        increase Count
+      }
+    }
+    output Count
+  \end{verbatim}
+\end{quote}
+
+To solve the problem, we need to do two things:
+\begin{itemize}
+  \item generalise from 12 to $N$, the number that we get from \IN;
+  \item express \texttt{f is a factor of N} in Python.
+\end{itemize}
+
+The first is easy. The second requires familiarity with the \emph{modulus} operator, which
+in Python (in fact, in most programming languages) is spelled \texttt{\%}. It gives you
+the remainder from a division. Consider these examples:
+
+\begin{quote}
+  \begin{verbatim}
+    10 % 4    --> 2       (10 divided by 4 leaves remainder 2)
+    11 % 4    --> 3       (11 divided by 4 leaves remainder 3)
+    12 % 4    --> 0       (12 divided by 4 leaves no remainder -- it's divisible)
+  \end{verbatim}
+\end{quote}
+
+Thus \texttt{f is a factor of N} translates into Python as \pycode|N % f == 0|.
+
+\Solution
+
+Here is the algorithm expressed in Python, in both looping styles.
+
+% NOTE - Ensure correct function names
+
+\begin{minipage}{\textwidth}
+  \begin{pythoncode}
+    def train301(IN, OUT):
+      N = int(IN.readline())
+      count = 0
+      for f in range(1,N+1):
+        if N % f == 0:
+          count = count + 1
+      print(count, file=OUT)
+
+    def train301(IN, OUT):
+      N = int(IN.readline())
+      count = 0
+      f = 1
+      while f <= N:
+        if N % f == 0:
+          count = count + 1
+        f = f + 1
+      print(count, file=OUT)
+  \end{pythoncode}
+\end{minipage}

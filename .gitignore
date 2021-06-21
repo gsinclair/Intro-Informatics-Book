@@ -7,3 +7,4 @@ _minted*
 *.pdf
 *.aex
 *.fdb_latexmk
+*.out
