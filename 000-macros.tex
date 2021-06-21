@@ -1,0 +1,74 @@
+
+\newcommand{\chaptermacro}[1]{\chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}}
+\newcommand{\questionheader}[1]{\stepcounter{problemnumber}
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}}
+
+\newcommand{\IN}{\texttt{IN}}
+\newcommand{\OUT}{\texttt{OUT}}
+
+\newcommand{\code}[1]{\texttt{\color{blue}#1}}
+\newcommand{\bi}[1]{\textbf{\textit{#1}}}
+\definecolor{MyGrey}{gray}{0.45}
+\newcommand{\grey}[1]{\color{MyGrey}#1}
+
+\newcommand{\futurereference}[1]{\textbf{\color{Plum}Ref: #1}}
+\newcommand{\note}[1]{\textbf{\color{Orchid}Note: #1}}
+
+\newcommand{\Question}{\textbf{\color{purple}Question}\quad}
+\newcommand{\Note}{\vspace{6pt}\textbf{\color{purple}Note}\quad}
+\newcommand{\Input}{\vspace{6pt}\textbf{\color{purple}Input}\quad}
+\newcommand{\Output}{\vspace{6pt}\textbf{\color{purple}Output}\quad}
+\newcommand{\Sample}{\vspace{6pt}\textbf{\color{purple}Sample}\quad}
+\newcommand{\Explanation}{\vspace{6pt}\textbf{\color{purple}Explanation}\quad}
+\newcommand{\Scratch}{\vspace{6pt}\textbf{\color{purple}Scratch}\quad}
+\newcommand{\Solution}{\vspace{6pt}\textbf{\color{purple}Solution}\quad}
+\newcommand{\Notes}{\vspace{6pt}\textbf{\color{purple}Notes}\quad}
+\newcommand{\Afterword}{\vspace{6pt}\textbf{\color{purple}Afterword}\quad}
+\newcommand{\Running}{\vspace{6pt}\textbf{\color{purple}Running the code}\quad}
+\newcommand{\Hint}{\vspace{6pt}\textbf{\color{purple}Hint}\quad}
+
+\newcommand{\workedexample}{{\color{purple}(worked example)}}
+\newcommand{\stronghint}{{\color{purple}(strongly hinted)}}
+
+\newcounter{problemnumber}
+\newcommand{\problemtag}{train\theproblemnumber}
+\newcommand{\problemtagtt}{\texttt{\problemtag}}
+
+\newminted{python}{xleftmargin=2cm, linenos}
+\newmintinline[pycode]{python}{}
+
+\newcommand{\sample}[4]{%
+  \begin{minipage}[t]{1.2cm}
+    ~~~
+  \end{minipage} %
+  \begin{minipage}[t]{#1\textwidth}
+    \textbf{IN}\\[3pt]
+    \ttfamily
+    #2
+  \end{minipage} %
+  \begin{minipage}[t]{#3\textwidth}
+    \textbf{OUT}\\[3pt]
+    \ttfamily
+    #4
+  \end{minipage}}
+
+\newcommand{\minipagestwo}[2]{
+  \begin{minipage}[t]{0.5\textwidth}
+    #1
+  \end{minipage} %
+  \begin{minipage}[t]{0.5\textwidth}
+    #2
+  \end{minipage}}
+
+\newcommand{\minipagesthree}[3]{
+  \begin{minipage}[t]{0.33333\textwidth}
+    #1
+  \end{minipage} %
+  \begin{minipage}[t]{0.33333\textwidth}
+    #2
+  \end{minipage} %
+  \begin{minipage}[t]{0.33333\textwidth}
+    #3
+  \end{minipage}}

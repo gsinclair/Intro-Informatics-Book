@@ -17,12 +17,58 @@ squares, you get the length of one side. The last line of input is simply \textt
 Your input will contain ten area calculations or fewer.
 
 \Output\ The output contains several lines, each of which is the result of an area
-calculation, which must be a float rounded to three decimal places.%
-\footnote{See \futurereference{Appendix ...} for instructions on rounding a float.}
+calculation, which must be a float rounded to three decimal places.
 
 \Sample
 
 \sample{0.2}{circle\\4.6\\triangle\\12\\5\\parallelogram\\19\\4.5\\
              square\\19\\rectangle\\7.2\\3.6\\stop}
        {0.2}{14.451\\30.000\\85.500\\361.000\\25.920}
+
+\Scratch\ This problem differs from the earlier ones in two ways:
+\begin{enumerate}
+  \item We are \emph{not} told at the beginning how many lines there will be.
+  \item Depending on the shape, we may need to read one line or two.
+\end{enumerate}
+
+Therefore, you deserve some help with this problem.
+
+To solve \#1, we want to loop \emph{endlessly} and break out of the loop when we read
+\texttt{stop}. This can be done with the following code structure:
+\begin{pythoncode}
+  while True:
+    # ...
+    if (condition):
+      break
+    # ...
+\end{pythoncode}
+
+The \pycode|while True| part creates the endless loop, and the \pycode|break| statement
+gets out of it. Naturally, the \emph{condition} for us to break out is having read the
+word \texttt{stop}.
+
+Solving \#2 is not difficult and you probably don't need help with it, but just in case,
+there is a hint on the next page.
+
+\clearpage
+
+\Hint
+
+Here is the structure of the code, excluding the function header.
+
+\begin{pythoncode}
+  while True:
+    shape = IN.readline().strip()
+    if shape == 'stop':
+      break
+    elif shape == 'circle':
+      radius = float(IN.readline())
+      area   = 3.141592654 * radius * radius
+      print(round(area,3), file=OUT)
+    elif shape == 'rectangle':
+      base   = float(IN.readline())
+      height = float(IN.readline())
+      # ...
+    # etc.
+\end{pythoncode}
 
