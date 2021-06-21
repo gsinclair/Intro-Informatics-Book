@@ -47,10 +47,9 @@ problems.
 \end{quote}
 
 When you solve actual numbered problems, you will write functions with names like
-\pycode|train101|. You can then run the function interactively, as you did with
-\pycode|example1|, but you can also do something even better: run it against test data and
-judging data. The meaning of this, and how to do it, will be explained in the worked
-examples.
+\pycode|ex101| (short for ``exercise 101''. You can then run the function interactively,
+as you did with \pycode|example1|, but you can also do something even better: run it
+against test data and judging data. These ideas were explained in the Introduction.
 
 % ---------------------------------------------------------------- 101 Classify a triangle
 
@@ -70,7 +69,7 @@ determine whether the triangle is equilateral, isosceles, or scalene.
 \Solution
 
 \begin{pythoncode} 
-  def train101(IN, OUT):
+  def ex101(IN, OUT):
     a = int(IN.readline())
     b = int(IN.readline())
     c = int(IN.readline())
@@ -92,8 +91,40 @@ This program is very much about making decisions (\pycode|if|/\pycode|elif|/\pyc
 with a small amount of data. Note the use of \pycode|and| and \pycode|or| in making the
 decisions. \pycode|elif| is short for ``else if''.
 
-Line 1 wraps this code up in a function called \pycode|train101|, which is important for
-running the code interactively and testing it against...
+Line 1 wraps this code up in a function called \pycode|ex101|, which is what the
+\textbf{learninformatics} environment expects to find when you...well, see below.
+
+\Running
+
+The Introduction explained the features of the \textbf{learninformatics} environment. Now
+we see them for ourselves.
+
+After you have \emph{Run} your code in replit.com, try the following in the console.
+\begin{itemize}
+  \item \pycode|l.run(101)|, then use the keyboard to enter the values \texttt{15},
+    \texttt{15} and \texttt{13}. The answer \texttt{isosceles} should immediately be
+    displayed.
+  \item \pycode|l.run(101, "15\n19\n20\n")|. This puts the data in directly, instead of
+    waiting for you to type it. The answer \texttt{scalene} should immediately be
+    displayed.
+  \item \pycode|l.samples(101)|. This runs your code against the three samples shown
+    above and checks that the correct output is produced. If the output is incorrect, or
+    if an error occurs, a helpful report is printed so you can try to work out what went
+    wrong.
+  \item \pycode|l.judge(101)|. This runs your code against a greater variety of inputs and
+    checks for the correct output. The inputs remain secret, the information printed if
+    something goes wrong is quite basic. If your code passes all tests, a success token is
+    printed as a reward.
+\end{itemize}
+
+Note that the name of the function containing your solution is important. If you call it
+\pycode|training101| or \pycode|unicorn|, or anything other than \pycode|ex101|, then the
+actions above will not work.
+
+\begin{tcolorbox}
+  As you proceed through the exercises, you will have many \texttt{def}s in your code, one
+  for each exercise. This is excellent: a record of your work that you can look back on.
+\end{tcolorbox}
 
 
 % -------------------------------------------------------------- 102 Calculate a gradient
@@ -102,7 +133,7 @@ running the code interactively and testing it against...
 
 \questionheader{\theproblemnumber\ Calculate a gradient \workedexample}
 
-\Question (\#\theproblemnumber) Read four floats representing points $(x_1,y_1)$ and
+\Question Read four floats representing points $(x_1,y_1)$ and
 $(x_2,y_2)$ and find the \emph{gradient} of the interval $AB$, which is typically called
 $m$ and is calculated as follows:
 \[ m = \frac{\mathrm{rise}}{\mathrm{run}} = \frac{y_2 - y_1}{x_2 - x_1}.\]
@@ -127,7 +158,7 @@ Output the gradient, rounded to three decimal places.  If the gradient is undefi
 \Solution
 
 \begin{pythoncode} 
-  def train102(IN, OUT):
+  def ex102(IN, OUT):
     x1 = float(IN.readline())
     y1 = float(IN.readline())
     x2 = float(IN.readline())
@@ -149,8 +180,9 @@ variable names. Lines 7--8 calculate the rise and run, which are important value
 determining the gradient. Lines 10--13 determine the answer, looking out for the undefined
 case. Line 15 outputs the answer to \OUT, rounding it to three decimal places as required.
 
-\Running\ The function is named \pycode|train102|, so you can:
+\Running\ The function is named \pycode|ex102|, so you can:
 \begin{itemize}
-  \item Run the code interactively with \pycode|l.run(train102)|.
-  \item Test the correctness of the code against some data with \pycode|l.train(102)|.
+  \item Run the code interactively with \pycode|l.run(102)|.
+  \item Test the correctness of the code against some data with \pycode|l.samples(102)|
+    and \pycode|l.judge(102)|.
 \end{itemize}

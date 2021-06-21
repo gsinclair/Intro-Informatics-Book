@@ -11,3 +11,126 @@ In the problems you've encountered so far, you would:
 I'm sure you understand, though, that most problems don't come with a fixed number of
 items of input, and sooner or later you will need to write code that can handle input of
 any size. Well, that time is now.
+
+
+
+% ---------------------------------------------------------------- 201 Tallest (3)
+
+\clearpage
+
+\questionheader{\theproblemnumber\ Who is the tallest? (3) \workedexample}
+
+\Question You run a photography studio for sporting teams. Before a team comes in for a
+photo shoot, you ask them to submit the height of each person in centimetres. This helps
+you to arrange studio props appropriately. In particular, you want to know the height of
+the tallest person in the photo so that the artwork on the wall can be placed in the best
+position.
+
+\Input A positive integer $N$, followed by $N$ lines, each containing a person's height in
+centimetres.
+
+\Sample
+
+\minipagestwo{\sample{0.3}{8\\165\\177\\172\\180\\175\\179\\181\\180}{0.3}{181}}
+             {\sample{0.3}{5\\127\\128\\128\\128\\127}{0.3}{128}}
+
+\Explanation In the first sample, there are eight heights given and the greatest of these
+is \texttt{181}. In the second sample, there are five heights given and the greatest of
+these is \texttt{128}. The fact that the ``greatest'' height occurred three times does not
+matter.
+
+\Scratch\ In all problems so far, we have known exactly how much data to read. Here we
+read the first line and it \emph{tells} us how much data to read! This means we need a
+program loop.
+
+Loops are discussed in more detail in \futurereference{Chapter 3}, but we only need a very
+basic use of them here: to repeat an action $N$ times.
+
+The beginning of our solution looks like (excluding the \pycode|ex201| function header):
+\begin{pythoncode}
+  N = int(IN.readline())
+  for i in range(N):
+    height = int(readline())
+    # ... do something with height ...
+\end{pythoncode}
+
+It is hopefully clear that if the first line of input is \texttt{8}, then the code above
+will read that value and then read eight more lines.
+
+So what to do with each new height that we read? We are trying to find the maximum height,
+so it would be good to keep track of that as we go. We start off initialising it to zero:
+\begin{pythoncode}
+  maxheight = 0
+\end{pythoncode}
+
+Within the loop, each new height we read is \emph{potentially} the maximum height. How do
+we know whether it is? Well, if it's greater than our current maximum, of course!
+\begin{pythoncode}
+  if height > maxheight:
+    # ...
+\end{pythoncode}
+
+And if it \emph{is} greater than our current maximum, then we update our current maximum.
+\begin{pythoncode}
+  if height > maxheight:
+    maxheight = height
+\end{pythoncode}
+
+This means that every time the loop runs, the \pycode|maxheight| variable contains the
+\emph{greatest height seen so far}. And therefore, when the loop has run its prescribed
+number of times, \pycode|maxheight| contains the greatest height overall.
+
+It's pretty simple, really, but you need to internalise every little detail of this
+solution and adapt the techniques to the coming problems.
+
+\Solution
+
+Putting all the above together, we get:
+
+\begin{pythoncode} 
+  def ex201(IN, OUT):
+    N = int(IN.readline())
+    maxheight = 0
+
+    for i in range(N):
+      height = int(IN.readline())
+      if height > maxheight:
+        maxheight = height
+
+    print(maxheight, file=OUT)
+\end{pythoncode}
+
+\Notes\ For now, we treat the code \pycode|for i in range(N)| as a magic incantation
+telling Python to do something $N$ times. The \emph{loop variable} $i$ is being completely
+ignored in this code, because we don't care how many times we've been through the loop so
+far. But we need to have a loop variable, so $i$ will do.
+
+It is tempting to shorten the name \pycode|maxheight| to \pycode|max|. But as you can see
+from the way \pycode|max| is coloured, we shouldn't do that: \pycode|max| is a special
+word in Python that we don't want to interfere with.
+
+It is worth looking at a \emph{trace table} of this algorithm. Sketching such a table
+\emph{before} you write any code is a valuable skill in solving problems. We are tracing
+the data used in the first sample. The $i$ column is included to show the looping but
+rendered in grey because we don't actually use this variable.
+
+\begin{center}
+  \begin{tabular}{lll}
+    \toprule
+    \emph{i\quad} & \emph{height} & \emph{maxheight} \\
+    \midrule
+    -        & -             & 0                \\
+    \grey{0} & 165           & 165              \\
+    \grey{1} & 177           & 177              \\
+    \grey{2} & 172           &                  \\
+    \grey{3} & 180           & 180              \\
+    \grey{4} & 175           &                  \\
+    \grey{5} & 179           &                  \\
+    \grey{6} & 181           & 181              \\
+    \grey{7} & 180           &                  \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+The \emph{maxheight} column shows exactly when that variable is updated, which occurs in
+Line~8.

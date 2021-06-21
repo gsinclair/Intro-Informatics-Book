@@ -12,9 +12,8 @@ Your program will read four numbers from \IN\ and write the largest number to \O
 \sample{0.2}{147\\165\\171\\168}
        {0.2}{171}
 
-\Scratch\ To read four numbers we just call \code{IN.readline()} four times, storing the
-value in a different variable each time. Because we're reading numbers and want to
-\emph{treat} them as numbers (not text), we use the \code{int} function as well.
+\Scratch\ We've seen several examples now of how to read an integer from \IN. For this
+problem, we need to do it four times.
 
 \begin{pythoncode}
     a = int(IN.readline())
@@ -47,9 +46,7 @@ determination of the largest value among $a$, $b$, $c$ and $d$.
 \Solution\ A complete solution looks like this, except for the six lines you need to add.
 
 \begin{pythoncode}
-    import plcinformatics as p
-
-    def train101(IN, OUT):
+    def ex103(IN, OUT):
         a = int(IN.readline())
         b = int(IN.readline())
         c = int(IN.readline())
@@ -66,24 +63,6 @@ determination of the largest value among $a$, $b$, $c$ and $d$.
 
 If you're really stuck, you can look at the answers provided.
 
-Here are the instructions to run your code.
-\begin{itemize}
-    \item To run your code interactively: \code{p.run(train101)}, and input four numbers
-        using the keyboard, one on each line. The answer will be printed immediately under
-        them.
-    \item To test it against a small data set: \code{p.test('train101', train101)}. If
-        your code has an error, you will get detailed information which might help you to
-        fix it.
-    \item To judge it against a larger data set: \code{p.judge('train101',
-        train101)}.\footnote{For \code{p.test} and \code{p.judge} the \code{'train101'} is
-        necessary because the name of the testing or judging data set must be known. For
-        \code{p.run} no data set is accessed, so the calling pattern is simpler.} Only
-        brief information is given about the success or otherwise of your code.
-\end{itemize}
-
-See \futurereference{Appendix ...} for an explanation of the status codes AC, WA, TLE and
-RTE.
-
 \Afterword\ The detailed assistance provided in this example was painstaking, so this will
 be gradually decreased over the next few problems.
 
@@ -93,6 +72,6 @@ As you coded this problem, you might have had two questions.
     \item What if there were 400 numbers instead of four?
 \end{itemize}
 
-The first question will be addressed in (reference: the next problem). The second one will
-wait, but not too much longer.
+These questions will be addressed in \emph{Who is the tallest? (2)} and \emph{Who is the
+tallest? (3)} respectively.
 

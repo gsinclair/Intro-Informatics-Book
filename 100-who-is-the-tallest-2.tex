@@ -1,6 +1,8 @@
-\questionheader{\theproblemnumber\ Who is the tallest (2)?}
 
-\emph{This question takes another look at \futurereference{Problem 101}.}
+\questionheader{\theproblemnumber\ Who is the tallest (2)? \workedexample}
+
+\textcolor{MidnightBlue}{This question takes another look at \emph{Who is the tallest?  (1)}.
+The question is the same, but the method of solution is different.}
 
 \Question\ In the schoolyard you determine who is the tallest by standing back to back.
 Among your online friends, though, the only way to find this out is to compare numbers.
@@ -13,11 +15,11 @@ Your program will read four numbers from \IN\ and write the largest number to \O
 
 \sample{0.2}{147\\165\\171\\168}{0.2}{171}
 
-\Scratch\ Just like the earlier problem (\futurereference{Tallest person (1)}), we need to
-read four integers from \IN. But this time, instead of making a lot of comparisons between
-$a$, $b$, $c$ and $d$, we will use Python's built-in \code{max} function.
+\Scratch\ Just like the earlier problem, we need to read four integers from \IN. But this
+time, instead of making a lot of comparisons between $a$, $b$, $c$ and $d$, we will use
+Python's built-in \pycode|max| function.
 
-If you try the following Python expressions in your shell...
+If you try the following Python expressions in your console...
 
 \begin{pythoncode}
     max(5, 1, 2, 9)
@@ -28,25 +30,23 @@ If you try the following Python expressions in your shell...
 ...then you will learn with some relief that Python has pretty much solved the ``Who is
 the tallest?'' problem for us.
 
-\Solution\ Make a new function \emph{in the same file}:
+\Solution\
 
 \begin{pythoncode}
-    def train102(IN, OUT):
-        a = int(IN.readline())
-        b = int(IN.readline())
-        c = int(IN.readline())
-        d = int(IN.readline())
+  def ex107(IN, OUT):
+    a = int(IN.readline())
+    b = int(IN.readline())
+    c = int(IN.readline())
+    d = int(IN.readline())
 
-        answer = max(a, b, c, d)
+    answer = max(a, b, c, d)
 
-        print(answer, file=OUT)
+    print(answer, file=OUT)
 \end{pythoncode}
-
-Use the tag \problemtagtt\ when you test and judge your code.
 
 \Afterword\ The \pycode|max()| function can take any number of arguments, or it can find
 the maximum of a (potentially very long) list. These are details for later. But here are
-two teasers that you can run in the shell and think about.
+two teasers that you can run in the console and think about.
 
 \begin{pythoncode} 
   max(n*n for n in [-6, -4, -1, 0, 3])
