@@ -1,0 +1,47 @@
+
+\questionheader{\theproblemnumber\ Collatz (2)}
+
+\Question\ An example of a \emph{Collatz chain} is as follows: \[
+  7 \to 22 \to 11 \to 34 \to 17 \to 52 \to 26 \to 13 \to 40 \to 20 \to 10 \to 5 \to 16 \to
+  8 \to 4 \to 2 \to 1.
+\]
+
+As stated earlier in \emph{Collatz (1)}, this is the rule: if a term $T_n$ is even, then
+$T_{n+1}$ is set to $\frac12 T_n$. If instead $T_n$ is odd, then $T_{n+1}$ is set to
+$3\cdot T_n + 1$. If and when 1 is reached, the chain terminates. As far as we know, all
+chains terminate.
+
+In this problem, you are given two positive integers $A$ and $B$, and you find the length
+of the longest chain produced.
+
+\Input\ One line containing two positive integers $A$ and $B$. Both values are between 2
+and 10\,000, inclusive.
+
+\Output\ A single positive integer, being the length of the longest chain encountered when
+using all starting values between $A$ and $B$.
+
+\Sample
+
+\sample{0.2}{10 16}{0.2}{18}
+
+\Explanation\ The table below shows the chain lengths for all starting terms 7--16.
+
+\begin{center}
+  \begin{tabular}{cc}
+    \toprule
+    Starting term & Chain length \\
+    \midrule
+    10            & 7            \\
+    11            & 15           \\
+    12            & 10           \\
+    13            & 10           \\
+    14            & 18           \\
+    15            & 18           \\
+    16            & 5            \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+The longest chain produced here is 18, hence the answer.
+
+The fact that there were two chains of length 18 is unimportant.

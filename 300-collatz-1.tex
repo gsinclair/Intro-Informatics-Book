@@ -1,0 +1,27 @@
+
+\questionheader{\theproblemnumber\ Collatz (1)}
+
+\Question\ An example of a \emph{Collatz chain} is as follows: \[
+  7 \to 22 \to 11 \to 34 \to 17 \to 52 \to 26 \to 13 \to 40 \to 20 \to 10 \to 5 \to 16 \to
+  8 \to 4 \to 2 \to 1.
+\]
+
+It should be reasonably apparent what the rule is. If a term $T_n$ is even, then $T_{n+1}$
+is set to $\frac12 T_n$. If instead $T_n$ is odd, then $T_{n+1}$ is set to $3\cdot T_n +
+1$. If and when 1 is reached, the chain terminates.
+
+The Collatz chain beginning with 7 has length 17. Your job is as follows: given $N$, find
+the length of the Collatz chain that starts with $N$.%
+\footnote{It is conjectured but not proven that every Collatz chain terminates. It is
+certainly true for all values ever tested with computers.}
+
+\Input\ A single integer $N$, where $1 < N < 1000$.
+
+\Output\ The length of the chain that starts with $N$. That is, the number of terms in the
+sequence, including the first term ($N$) and the last term (1).
+
+\Sample
+
+\sample{0.2}{7}{0.2}{17}
+
+\Explanation\ The sample matches the example given in the question.
