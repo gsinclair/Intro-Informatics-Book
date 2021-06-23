@@ -36,3 +36,21 @@ instead of \pycode/max/.
 See the first code listing in Chapter 1 if you need a refresher on outputing floats
 rounded to two decimal places.
 
+Note that to get the output printed on three lines, you can use three \pycode|print|
+statements. Each statement prints its contents on a new line.
+\begin{pythoncode}
+  print('Line 1')
+  print('Line 2')
+  print('Line 3')
+\end{pythoncode}
+
+Furthermore, note that you need the value of the highest wage \emph{three} times when
+completing this exercise: to print it, to calculate the range, and to determine whether
+the outcome is fair. Rather than calculating it three times, you should store it in a new
+variable:
+\begin{pythoncode}
+  highest = # ... code to calculate it goes here ...
+\end{pythoncode}
+
+Then you can use \pycode|highest| in the remainder of your code.
+

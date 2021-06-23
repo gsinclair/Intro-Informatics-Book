@@ -122,8 +122,14 @@ Note that the name of the function containing your solution is important. If you
 actions above will not work.
 
 \begin{tcolorbox}
-  As you proceed through the exercises, you will have many \texttt{def}s in your code, one
+  As you proceed through the exercises, you will have many \pycode|def|s in your code, one
   for each exercise. This is excellent: a record of your work that you can look back on.
+
+  \vspace{12pt}
+  \textbf{Take note!}\quad\ It's easy to end up with one \pycode|def| inside another. If you run
+  \pycode|l.test(101)|, for instance, and get a message saying that function
+  \texttt{ex101} can't be found, then you probably need to \emph{outdent} part of your
+  code so that the line \pycode|def ex101(IN, OUT):| is flush against the left side.
 \end{tcolorbox}
 
 
