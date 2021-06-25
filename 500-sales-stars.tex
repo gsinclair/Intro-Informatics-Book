@@ -1,0 +1,70 @@
+
+\questionheader{\theproblemnumber\ Sales stars}
+
+\Question\ The end of the quarter is nigh, and it's time for the best salespeople in
+\textsf{Tancorp} to bask in adulation as they are crowned this quarter's \emph{Sales
+Stars}. Can you quickly work out who they are?
+
+\Input\
+
+\begin{itemize}
+  \item The first line contains two positive integers $N$ and $T$. $N$ is the number of
+    lines of data that follow, and $T$ is the sales target above which a person will be
+    considered a \emph{Sales Star}.
+  \item Following that are $N$ lines of data, one for each salesperson. A line of data
+    contains the person's name followed by some positive integers, each representing the
+    number of widgets that person sold in a month. There will be between 1 and 3
+    (inclusive) such numbers in a line, because this represents the last quarter's worth
+    of data, but some salespeople started at the \textsf{Tancorp} only a month or two ago.
+\end{itemize}
+
+\Output\ The names of all salespeople whose total sales exceed $T$. The names must appear
+in the same order that they appears in the input.
+
+\Sample
+
+\sample{0.35}{5 90\\Tom 33 28 17\\Jerry 39 41 22\\Maddie 22 38\\Sharon 11 35 36\\Hall 40 45 41}
+       {0.2}{Jerry\\Hall}
+
+\Explanation\ The salespeople's totals are shown below.
+
+\begin{center}
+  \begin{tabular}{lr}
+    \toprule
+    Name   & Total \\
+    \midrule
+    Tom    & 78    \\
+    Jerry  & 102   \\
+    Maddie & 60    \\
+    Sharon & 82    \\
+    Hall   & 126   \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\medskip
+Jerry and Hall are the two who exceed the target of 90, hence the answer.
+
+\Scratch\ You'll need some help separating the names from the numbers here. This is a job
+for Python's \emph{list slicing}. The following snippet demonstrates all you need for this
+problem.
+
+\begin{pythoncode}
+  data = ['Tom', '33', '28', '17']
+  name = data[0]
+  rest = data[1:]
+\end{pythoncode}
+
+That \pycode|data[1:]| means: take a slice from the \pycode|data| list, starting at index
+1 and continuing until the end. Here are some other slices you might try out of interest.
+
+\begin{pythoncode}
+  data = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  data[3:7]
+  data[1:8:2]
+  data[::2]
+  data[1::2]
+  data[5:0:-1]
+  data[::-1]
+\end{pythoncode}
+

@@ -1,0 +1,52 @@
+
+\questionheader{\theproblemnumber\ Underreporting}
+
+\Question\ Yoanna manages a small taxi business. Drivers hire cars from her for a fee and
+do their best to make a profit in the time they have the car. She runs the radio and
+counts the cash. But lately she suspects that some drivers are underreporting their hours.
+It's been pretty much an honesty system that's worked well so far, but she might need to
+keep a closer eye on things.
+
+Anyway, to help her get started, she wants you to find the number of drivers reporting
+less than a certain amount of time per week. This won't prove anything, but it might tell
+her who to watch out for.
+
+\Input\
+
+\begin{itemize}
+  \item The first line contains two positive integers $N$ and $H$. $N$ is the number of
+    lines of data that follow, and $H$ is the minimum number of hours considered
+    acceptable for this investigation.
+  \item Following that are $N$ lines of data, one for each driver. A line of data contains
+    several positive integers, each representing the hours a driver reported on a day.
+    There will be between 1 and 7 (inclusive) such numbers in a line, because this
+    represents the last week's worth of data, but drivers don't necessarily take a car
+    each day. You are interested in the \emph{total} of these hours.
+\end{itemize}
+
+\Output\ A single integer, being the number of drivers whose total hours are less than
+$H$.
+
+\Sample
+
+\sample{0.3}{7 10\\5 8 3 5 3\\2 4 2\\6 6 6 6\\5 4 5 2 2 7\\1 2 3 4\\3 3 3\\3 5 3 4}
+       {0.2}{2}
+
+\Explanation\ The drivers' hours total to 24, 8, 24, 25, 10, 9, 15. Of these, two drivers
+have a total that is less than the prescribed 10 hours, so the answer is \texttt{2}.
+
+\Scratch\ Despite sounding complex, this question is very easy. You know how to read $N$
+and $H$. You know how to read $N$ lines, and for each of those, you know how to turn it
+into a list of integers. Now all you need is the \emph{sum} of the integers in each line,
+and the built-in Python function \pycode|sum| has you covered. Try the following in your
+console:
+
+\begin{pythoncode}
+  sum(4,5,1,2)
+  hours = [5,4,5,2,2,7]
+  sum(hours)
+\end{pythoncode}
+
+Line 1 shows that you can get the sum of several numbers given separately. Line 3 shows
+that you can get the sum of the numbers in a list. So in this problem, you don't even need
+to care how many numbers are on each line!

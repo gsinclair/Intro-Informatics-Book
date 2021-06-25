@@ -1,0 +1,35 @@
+
+\questionheader{\theproblemnumber\ Percentage profit}
+
+\Question\ Liona runs a grocery store. Experience tells her she needs to make at least
+35\% profit on her sales in order to make ends meet. The various items she sells have
+different markups, though. Rich Tea biscuits have a cost price of \$0.85 and a selling
+price of \$1.32, giving a healthy 55.3\% profit. But the popular Lemon-Cola drink has a
+lot of competition around the place, and she only clears about 17\% on that.
+
+Help Liona analyse her overall percentage profit. She will provide you with the important
+details of the items she sells in a typical week.
+
+\Input\ The first line contains $N$, the number of shop items described. There follow $N$
+lines, each of which contains $C_i$ (the item's cost price, in dollars), $M_i$ (the item's
+markup, in dollars), and $Q_i$, the quantity of the item sold in a typical week.
+
+You are guaranteed that:
+\begin{itemize}
+  \item $0 < N < 1000$
+  \item $0.05 < C_i < 100.00$
+  \item $0.05 < M_i < 100.00$
+  \item $0 \le Q_i \le 1000$
+\end{itemize}
+
+\Output\ A single positive float, rounded to one decimal place, representing the overall
+percentage profit calculated from the sale of all those items.
+
+\Sample
+
+\sample{0.3}{3\\1.47 0.32 58\\13.32 1.96 17\\5.85 2.20 139}
+       {0.2}{31.8}
+
+\Explanation\ Some quick calculations show that Liona is spending \$1124.85 to put the
+products on her shelves and is making \$357.68 in profit, which makes a percentage profit
+of $31.798\dots\%$, or 31.8\% (rounded).
