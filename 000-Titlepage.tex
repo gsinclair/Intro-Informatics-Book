@@ -1,14 +1,26 @@
+{
+
 \DeclareFixedFont{\titlefont}{T1}{ppl}{b}{}{0.5in}
-\DeclareFixedFont{\subtitlefont}{T1}{ppl}{b}{}{0.3in}
+\DeclareFixedFont{\subtitlefont}{T1}{ppl}{m}{it}{0.4in}
+\DeclareFixedFont{\authorfont}{T1}{ppl}{sb}{}{0.3in}
 \DeclareFixedFont{\versionfont}{T1}{ppl}{}{}{0.2in}
+
 \newgeometry{left=1in, right=1in,top=1in, bottom=0in}
 \definecolor{mytan}{HTML}{F6D5A8}
 \pagecolor{mytan}
 
+\colorlet{greytitle1}{black!95!}
+\colorlet{greytitle2}{black!65!}
+\colorlet{greytitle3}{black!75!}
+
 \thispagestyle{empty}
 \begin{flushright}
-  \titlefont Informatics for\\[9pt] complete beginners\\[12pt]
-  \subtitlefont Gavin Sinclair
+  \color{greytitle1}
+  \titlefont High School Informatics\\[9pt] 
+  \color{greytitle2}
+  \subtitlefont for complete beginners\\[24pt]
+  \color{greytitle3}
+  \authorfont Gavin Sinclair
   \vfill
   \versionfont \BookVersionString \\[6pt] \BookVersionDate
   \vfill
@@ -21,3 +33,5 @@
      };
    \end{tikzpicture}
  \end{center}
+
+}
