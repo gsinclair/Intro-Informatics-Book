@@ -9,7 +9,7 @@ multiple inputs on the same line}. Problem 401 below demonstrates this.
 
 % ---------------------------------------------------------------- Name, age, hourly rate
 
-\questionheader{\theproblemnumber\ Name, age and hourly rate \workedexample}
+\questionheader{Name, age and hourly rate \workedexample}
 
 There is no ``question'' here, really. You will simply read data about multiple people
 from three lines of \IN, and write that data to \OUT\ in a more readable format. In so
@@ -65,7 +65,7 @@ The choice is yours, but you \emph{must} do at least \#1 above.
 \Solution
 
 \begin{pythoncode}
-  def train401(IN, OUT):
+  def ex501(IN, OUT):
     names = IN.readline().split()
     ages  = [int(x)   for x in IN.readline().split()]
     rates = [float(x) for x in IN.readline().split()]
@@ -80,7 +80,7 @@ The choice is yours, but you \emph{must} do at least \#1 above.
 Here is a more sophisticated solution. Note Lines 5 and 8.
 
 \begin{pythoncode}
-  def train401(IN, OUT):
+  def ex501(IN, OUT):
     names = IN.readline().split()
     ages  = [int(x)   for x in IN.readline().split()]
     rates = [float(x) for x in IN.readline().split()]
@@ -93,10 +93,10 @@ Here is a more sophisticated solution. Note Lines 5 and 8.
 
 Also, we can push formatted strings further to create a nice tabular output. This will not
 pass the test for problem \theproblemnumber, so it's named differently, but you can still
-run it with \pycode|l.run(train401a)| and provide your own data.
+run it with \pycode|l.run(ex501a)| and provide your own data.
 
 \begin{pythoncode}
-  def train401a(IN, OUT):
+  def ex501a(IN, OUT):
     names = IN.readline().split()
     ages  = [int(x)   for x in IN.readline().split()]
     rates = [float(x) for x in IN.readline().split()]
