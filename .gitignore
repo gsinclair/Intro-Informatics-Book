@@ -4,9 +4,8 @@
 *.fls
 *.w18
 _minted*
-*.pdf
+Informatics-Beginners.pdf
 *.aex
 *.fdb_latexmk
 *.out
-Versioned\ books
 *.pyg
