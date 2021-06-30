@@ -1,0 +1,37 @@
+
+\questionheader{One day I'll be rich}
+
+\Question\ I have it in mind that I'd really like to be a millionaire. Unfortunately all I
+have at the moment is $D$ dollars. But by earning $I$ per cent interest per annum,
+compunded yearly, one day I will realise my dreams. The question is, how long will it
+take?
+
+\Input\ There are three lines in \IN.
+\begin{itemize}
+  \item The first line contains $D$, a positive integer number of dollars that I am
+    depositing in the bank.
+  \item The second line contains $I$, a positive float representing the interest rate that
+    will be applied to my balance.
+  \item The third line contains $T$, a positive integer representing my \emph{target}: the
+    balance I want my bank account to exceed.
+\end{itemize}
+
+\Output\ A single positive integer $N$, representing the number of years I must wait until
+my bank balance exceeds $T$.
+
+\Sample
+
+\minipagestwo{ \sample{0.4}{400\\3.5\\500}{0.4}{7} }
+             { \sample{0.4}{15000\\2.21\\1000000}{0.4}{193} }
+
+\Explanation The bank balance for the first sample follows this sequence (rounded to two
+decimal places): \[
+  400.00, \quad 414.00, \quad 428.49, \quad 443.49, \quad 459.01,
+  475.07, \quad 491.70, \quad \mathbf{508.91}, \quad 526.72, \quad \dots
+\]
+
+It is after seven years that the balance exceeds the target of \$500, so the answer is
+\texttt{7}.
+
+In the second sample, it takes 193 years to grow the balance from \$15\,000 to over
+\$1\,000\,000.

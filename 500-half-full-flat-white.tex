@@ -1,0 +1,27 @@
+
+\questionheader{Half-full flat white, please!}
+
+\Question\ So I went to get a coffee, right? I'd already had a milky breakfast that
+morning, so I didn't really want a flat white, but I didn't want \emph{no} milk either.
+After a few moments pondering, I ordered a half-full flat white. And wouldn't you know it,
+the barista obviously slept through fractions, because it came back three-quarters full!
+
+The next day, I \emph{wanted} a three-quarter flat white, and was presented with one
+that was seven-eighths full! This barista is making a consistent error, and I want you to
+predict what I'll get in future based on what I ask for.
+
+\Input\ Two positive integers $N$ and $D$, representing the numerator and denominator of
+the fraction that I asked for.
+
+\Output\ Two positive integers $N'$ and $D'$, representing the numerator and denominator
+of the fraction that I will receive. Your answer must represent a fraction in simplest
+terms.
+
+\Sample
+
+\minipagesthree{ \sample{0.3}{1 2}{0.2}{3 4} }
+               { \sample{0.3}{3 4}{0.2}{7 8} }
+               { \sample{0.3}{1 9}{0.2}{5 9} }
+
+\Scratch To ensure a fraction is in simplest terms, you might like to research the
+\pycode|gcd| function in the \pycode|math| module.
