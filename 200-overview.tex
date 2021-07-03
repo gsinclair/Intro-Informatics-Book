@@ -12,6 +12,44 @@ I'm sure you understand, though, that most problems don't come with a fixed numb
 items of input, and sooner or later you will need to write code that can handle input of
 any size. Well, that time is now.
 
+The next worked example tells you all you need to know, but it is worth pointing out here
+the key concept: \emph{asking Python to do something a certain number of times}.
+
+Here are a small listing you could try.%
+\footnote{It's worth having a separate repl just to try things like this out. Create a new
+project, perhaps called \textsf{Scratch} or \textsf{Tryout} and keep it open in a separate
+tab.}
+
+\begin{pythoncode}
+  name = 'Deborah'
+  for i in range(10):
+    print(f'Hello {name}!')
+    print(f'How are you, {name}?')
+\end{pythoncode}
+
+It is clear that code like \pycode|for i in range(10):| causes the code in the block that
+follows to be run ten times.
+
+Beginners often find this confusing because they don't see the variable \pycode|i|
+being explicitly set. Here is an alternative way of writing the code.
+
+\begin{pythoncode}
+  name = 'Deborah'
+  i = 0
+  while i < 10:
+    print(f'Hello {name}!')
+    print(f'How are you, {name}?')
+    i = i + 1
+\end{pythoncode}
+
+After reviewing (and hopefully running and experimenting with) both pieces of code above,
+two things should be clear:
+\begin{enumerate}
+  \item It is nice to see the \pycode|while| code to understand how the \pycode|for| code
+    works.
+  \item It is more convenient to write the \pycode|for| code, and that is what we shall do
+    from now on.
+\end{enumerate}
 
 
 % ---------------------------------------------------------------- 201 Tallest (3)

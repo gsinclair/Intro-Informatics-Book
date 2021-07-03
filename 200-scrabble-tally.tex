@@ -1,5 +1,5 @@
 
-\questionheader{Scrabble tally}
+\questionheader{Scrabble tally \stronghint}
 
 \Question\ Four friends---Albert, Betty, Charlie and Dotty---have played a lot of Scrabble
 games over the years. The competition has been pretty close, but they've all kind of
@@ -16,14 +16,47 @@ are $N$ lines, each of which contains the name \texttt{Albert}, \texttt{Betty},
 \Sample
 
 \sample{0.25}{10\\Dotty\\Albert\\Albert\\Charlie\\Dotty\\Albert\\Dotty\\Dotty\\Dotty\\Charlie}
-       {0.2}{Albert: 3\\Betty: 0\\Charlie: 2\\Dotty: 5}
+       {0.2}{Albert:~~3\\Betty:~~~0\\Charlie:~2\\Dotty:~~~5}
 
-\Scratch\ In this problem, you are reading \emph{strings} for the first time. ``String''
-is the computer-science word for textual data, presumably because the characters are
-``strung'' together. To read a string, we could simply call \pycode|IN.readline()|, with
-no \pycode|int(...)| or \pycode|float(...)| wrapper because we certainly do not want
-Python to attempt to convert our names to numbers.
+\Scratch\ You know from the previous problem how to read strings (and remove the trailing
+newline) and compare them. This problem is simply a matter of counting how many occurences
+of four different strings there are.
 
-There's a sting quite literally in the tail, though, because when we read a line of data
-from \IN, the resulting string has a newline character at the end, and we don't really
-want that.
+If there are $N$ names in the input data then we need to call \pycode|readline()| $N+1$
+times. Each time we read a line in the loop, we are reading a \emph{name}. So our code is
+structured like this.
+
+\begin{pythoncode}
+  N = int(IN.readline())
+
+  for i in range(N):
+    name = IN.readline().strip()
+\end{pythoncode}
+
+But what about the counting? We are counting occurences of Albert, Betty, Charlie and
+Dotty, so let's have variables named \pycode|a|, \pycode|b|, \pycode|c| and \pycode|d|.
+
+\begin{pythoncode}
+  N = int(IN.readline())
+  a = 0
+  b = 0
+  c = 0
+  d = 0
+
+  for i in range(N):
+    name = IN.readline().strip()
+    # Update a, b, c or d, depending on the contents of name.
+
+  # Print the answer
+\end{pythoncode}
+
+The output requires four lines, so you will use four lines of code, each containing one
+\pycode|print| statement. Be careful of alignment, as shown in the sample output.
+
+One last thing before you complete this: the initialisation of our four counter variables
+can be done in one line!
+
+\begin{pythoncode}
+  a, b, c, d = 0, 0, 0, 0
+\end{pythoncode}
+

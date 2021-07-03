@@ -1,0 +1,234 @@
+
+\questionheader{Check the invite list \workedexample}
+
+\Question\ Iliana is planning a party. Like, the best party e-vah! She already has a draft
+list of who she wants to invite, but now her friend Alona mentions a new name. Or is it
+new!? We'll have to check the invite list to find out.
+
+\Input\ From \IN\ you will read:
+\begin{itemize}
+  \item a name $Q$, the person whose invite-status is being questioned;
+  \item a positive integer $N$, the number of people on the draft invite list;
+  \item $N$ names $I_1$ to $I_N$, representing people who are on the draft invite list.
+\end{itemize}
+
+\Output\ A single line to say whether the name $Q$ appears on the draft invite list, and
+if so, where. The samples make this clear.
+
+\Sample
+
+{\small
+\minipagestwo{%
+  \sample{0.2}{Kevin\\5\\Jenny\\Tonya\\Sandy\\Erin\\Mike}
+         {0.6}{Kevin is not yet invited}
+}{%
+  \sample{0.2}{Kevin\\6\\Jenny\\Tonya\\Sandy\\Kevin\\Erin\\Mike}
+         {0.6}{Kevin is \#4 on the list}
+}
+}
+
+\Explanation\ In the first sample, we are determining whether Kevin appears in the list
+Jenny, Tonya, Sandy, Erin and Mike. Kevin is \emph{not} among those names, hence the
+output \texttt{Kevin is not yet invited}. In the second sample, Kevin \emph{is} among the
+names and appears in position number 4, hence the output \texttt{Kevin is \#4 on the
+list}.
+
+\Scratch\ This exercise brings you two new skills:
+\begin{itemize}
+  \item reading and working with strings; and
+  \item keeping track of where we are in the list.
+\end{itemize}
+
+Remember also that you can \pycode|break| out of a loop. In the second sample, once you
+find Kevin in position 4 you know what output is required, so there's no need to continue
+reading names.
+
+\textbf{Reading strings} from \IN\ is very straightforward. Here's the summary:
+\begin{pythoncode}
+  name = IN.readline().strip()
+\end{pythoncode}
+
+There are two things to notice about this use of \pycode|readline()| compared to what
+we usually do.
+\begin{enumerate}
+  \item There is no \pycode|int(...)| or \pycode|float(...)| because we are \emph{not}
+    dealing with numerical data.
+  \item We append \pycode|.strip()| to remove the newline character at the end.
+\end{enumerate}
+
+To explain the second item further, \pycode|readline()| reads a \emph{line} of input,
+exactly as it says. And a line is terminated by a \emph{newline} character, which is what
+gets collected when you hit the Enter or Return key. So you might like to think that
+reading the second line of the sample input(s) gives you \pycode|'Kevin'|, but
+unfortunately it does not; you get \pycode|'Kevin\n'|. Calling \pycode|.strip()| on this
+string removes any whitespace from the left or right, giving us the \pycode|'Kevin'| that
+we want.
+
+Here is a simple example you can try. Run it with \pycode|l.run(newline_example)| and type
+two strings as input (e.g. \texttt{Hello} and \texttt{Goodbye}).
+\begin{pythoncode}
+  def newline_example(IN, OUT):
+    a = IN.readline()
+    b = IN.readline().strip()
+    print('a: {repr(a)}  b: {repr(b)}', file=OUT)
+\end{pythoncode}
+
+The special function \pycode|repr|%
+\footnote{See docs.python.org/3/library/functions.html}
+gives you a programmer's view of what an object is, thus it explicitly \emph{shows} you
+the newline character instead of \emph{printing} it.
+
+\textbf{Working with strings} for this problem means asking whether two strings are the
+same. This is no different from asking whether two integers are the same. You can try the
+following in the console:
+\begin{pythoncode}
+  'Kevin' == 'Kevin'        # True
+  'Kevin' == 'Andy'         # False
+  'Kevin' > 'Andy'          # True (alphabetical order)
+\end{pythoncode}
+
+\textbf{Keeping track of where we are} is also easy enough, but to ensure understanding we
+need to look at a few ways of doing it. To develop this, we assume that our code will look
+something like this
+\begin{pythoncode}
+  for i in range(N):
+    name = IN.readline().strip()
+    # ...
+\end{pythoncode}
+and build around it.
+
+Before we look at any code, consider the trace table we are trying to achieve, using the
+second sample as input.
+
+\begin{center}
+  \begin{tabular}{cl}
+    \toprule
+    position & name \\
+    \midrule
+    1 & Jenny \\
+    2 & Tonya \\
+    3 & Sandy \\
+    4 & Kevin \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\medskip
+
+The fifth and sixth names are not shown as we would stop reading when we find
+Kevin, and we would have the information we need to report that he is \#4 in the list.
+
+The first approach is to have a variable called \pycode|position| that we initialise to 1
+and update each time we go through the loop.
+\begin{pythoncode}
+  position = 1
+  for i in range(N):
+    name = IN.readline().strip()
+    # ...
+    position = position + 1
+\end{pythoncode}
+
+This could be written with a \pycode|while| loop instead of a \pycode|for| loop, but it's
+not an improvement.
+
+\begin{pythoncode}
+  position = 1
+  i = 0
+  while i < N:
+    name = IN.readline().strip()
+    # ...
+    position = position + 1
+    i = i + 1
+\end{pythoncode}
+
+However, it occurs to us that we might not need \emph{both} \pycode|position| and
+\pycode|i|. The purpose of \pycode|i| is to run the loop the correct number of times; this
+duty could be performed by \pycode|position| instead.
+
+\begin{pythoncode}
+  position = 1
+  while position <= N:
+    name = IN.readline().strip()
+    # ...
+    position = position + 1
+\end{pythoncode}
+
+That's better. And now that we have a conceptually clean approach, we can translate it
+back into a \pycode|for| loop.
+
+\begin{pythoncode}
+  for position in range(1, N+1):
+    name = IN.readline().strip()
+    # ...
+\end{pythoncode}
+
+In that final piece of code, we don't need to assign or update \pycode|position| manually;
+the \pycode|for| loop takes care of it for us. We just need to specify what we want the
+range to be.
+
+\textbf{We solve the problem} by the following steps.
+\begin{enumerate}
+  \item Read $N$ and $Q$ and set them to variables \pycode|N| and \pycode|target_name|.
+  \item Set a variable \pycode|found| to \pycode|False|. We need to know whether we found
+    the name or not.
+  \item Use \pycode|for position in range(1, N+1):| to loop $N$ times while keeping track
+    of the position $(1,2,3,\dots,N)$.
+  \item Each time through the loop, we read a name (and strip the newline). If it's equal
+    to \pycode|target_name|, set \pycode|found| to \pycode|True| and break out of the
+    loop. If it's not equal to \pycode|target_name|, there's nothing special we need to
+    do, just let the loop run again.
+  \item When the loop finishes (either by \pycode|break| or by running out of items to
+    read), we need to print the answer, which depends on whether the target name was
+    \pycode|found| or not.
+\end{enumerate}
+
+\Solution
+
+\begin{pythoncode}
+  N = int(IN.readline())
+  target_name = IN.readline().strip()
+  found = False
+
+  for position in range(1, N+1):
+    name = IN.readline().strip()
+    if name == target_name():
+      found = True
+      break
+
+  if found:
+    print(f'{target_name} is #{position} on the list', file=OUT)
+  else:
+    print(f'{target_name} is not yet invited', file=OUT)
+\end{pythoncode}
+
+\bigskip
+Here are trace tables for the two examples.
+\medskip
+
+\minipagestwo{
+  \begin{center}
+    \begin{tabular}{clc}
+      \toprule
+      position & name & found \\
+      \midrule
+      1 & Jenny & False\\
+      2 & Tonya & False\\
+      3 & Sandy & False\\
+      4 & Erin  & False\\
+      5 & Mike  & False\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+}{
+  \begin{center}
+    \begin{tabular}{clc}
+      \toprule
+      position & name & found \\
+      \midrule
+      1 & Jenny & False\\
+      2 & Tonya & False\\
+      3 & Sandy & False\\
+      4 & Kevin & True\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+}
