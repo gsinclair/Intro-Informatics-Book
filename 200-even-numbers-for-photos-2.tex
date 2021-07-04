@@ -1,0 +1,149 @@
+
+\questionheader{Even numbers for photos! (2)}
+
+\Question\ You tried, but the difficulties of arranging photos for the wedding is just all
+too hard, even with the help of your program. There are just too many scattered chains of
+odd groups. So you decide to write a new program to focus on just the biggest problem.
+Looking at the same example data at the previous problem \[
+  \mathbf{7}
+  \quad 8 \quad 10 \quad 8
+  \quad \mathbf{11} \quad \mathbf{13} \quad \mathbf{11} \quad \mathbf{19}
+  \quad 4
+  \quad \mathbf{9} \quad \mathbf{15}
+  \quad 6 \quad 8
+\]
+we see that the longest chain $[11,13,11,19]$ has length 4 and begins in position 5. This
+information (length and starting position of the longest chain) is what you want to
+uncover this time, because it will tell you the size of your greatest problem and where to
+find it.
+
+\Input\ The input for this exercise follows the same specification as the input for the
+previous exercise.
+
+\Output\ The length and starting location of the longest chain, formatted as shown in the
+samples. If there are no chains of odd groups, both values will be zero.
+
+\Sample
+
+{\small
+\minipagesthree{
+  \sample{0.25}{13\\7\\8\\10\\8\\11\\13\\11\\19\\4\\9\\15\\6\\8}
+         {0.4}{Length:\ 4\\Starts:\ 5}
+}{
+  \sample{0.25}{6\\5\\3\\4\\8\\6\\3}
+         {0.4}{Length:\ 2\\Starts:\ 1}
+}{
+  \sample{0.25}{7\\4\\6\\4\\2\\6\\4\\6}
+         {0.4}{Length:\ 0\\Starts:\ 0}
+}
+} % end small
+
+\Explanation\ The first sample represents the example given in the question. The second
+sample has its longest odd chain $[5,3]$ with length 2 starting in position 1. The third
+sample has no odd chains, so it has the output specified earlier.
+
+\Scratch\ We have seen before (\futurereference{Check the invite list}) how to track our
+position in the list of data, so we can use that approach again:
+\begin{pythoncode}
+  for position in range(1, N+1):
+    size = int(IN.readline())
+    # ...
+\end{pythoncode}
+
+The values we need to track this time are:
+\begin{itemize}
+  \item the length of the current chain;
+  \item the starting location of the current chain;
+  \item the length of the longest chain seen so far; and
+  \item the starting location of the longest chain seen so far.
+\end{itemize}
+
+Suggested variables then are \pycode|curr_len| (playing the same role as \pycode|ngroups|
+did in the previous question), \pycode|curr_loc| \pycode|longest_len| and
+\pycode|longest_loc|.
+
+You might try to construct and complete a trace table before continuing. A completed trace
+table is shown on the next page.
+
+
+\clearpage % ------------------------------------------------------------------ new page
+\questionheadercontinued{Even numbers for photos! (2)}
+
+Here is the completed trace table.
+
+\bigskip
+\begin{center}
+  \sisetup{detect-weight=true,detect-inline-weight=math}
+  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]
+    S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]}
+    \toprule
+    {position} & {size}      & {curr\_len} & {curr\_loc} & {longest\_len} & {longest\_loc} \\
+    \midrule
+               &             & 0           & 0           & 0              & 0              \\
+    1          & \bfseries 7  & 1           & 1           & 1              & 1              \\
+    2          & 8           & 0           & 0           & 1              & 1              \\
+    3          & 10          & 0           & 0           & 1              & 1              \\
+    4          & 8           & 0           & 0           & 1              & 1              \\
+    5          & \bfseries 11 & 1           & 5           & 1              & 1              \\
+    6          & \bfseries 13 & 2           & 5           & 2              & 5              \\
+    7          & \bfseries 11 & 3           & 5           & 3              & 5              \\
+    8          & \bfseries 19 & 4           & 5           & 4              & 5              \\
+    9          & 4           & 0           & 0           & 4              & 5              \\
+    10         & 9           & 1           & 10          & 4              & 5              \\
+    11         & \bfseries 15 & 2           & 10          & 4              & 5              \\
+    12         & 6           & 0           & 0           & 4              & 5              \\
+    13         & 8           & 0           & 0           & 4              & 5              \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\bigskip
+
+As an exercise, you might like to complete another trace table for this problem. Here is
+some sample data, where $N=17$.\[
+  14 \quad 8 \quad 
+  \mathbf{9} \quad \mathbf{15} \quad
+  10 \quad 22 \quad 
+  \mathbf{5} \quad \mathbf{21} \quad \mathbf{17} \quad 
+  8 \quad
+  \mathbf{27} \quad
+  10 \quad
+  \mathbf{3} \quad \mathbf{9} \quad \mathbf{11} \quad \mathbf{7} \quad \mathbf{17}
+\]
+
+The answer is on the next page.
+
+
+\clearpage % ------------------------------------------------------------------ new page
+\questionheadercontinued{Even numbers for photos! (2)}
+
+Here is the completed trace table for the longer sample data.
+
+\bigskip
+\begin{center}
+  \sisetup{detect-weight=true,detect-inline-weight=math}
+  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]
+    S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]}
+    \toprule
+    {position} & {size}       & {curr\_len} & {curr\_loc} & {longest\_len} & {longest\_loc} \\
+    \midrule
+               &              & 0           & 0           & 0              & 0              \\
+    1          & 14           & 0           & 0           & 0              & 0              \\
+    2          & 8            & 0           & 0           & 0              & 0              \\
+    3          & \bfseries 9  & 1           & 3           & 1              & 3              \\
+    4          & \bfseries 15 & 2           & 3           & 2              & 3              \\
+    5          & 10           & 0           & 0           & 2              & 3              \\
+    6          & 22           & 0           & 0           & 2              & 3              \\
+    7          & \bfseries 5  & 1           & 7           & 2              & 3              \\
+    8          & \bfseries 21 & 2           & 7           & 2              & 3              \\
+    9          & \bfseries 17 & 3           & 7           & 3              & 7              \\
+    10         & 8            & 0           & 0           & 3              & 7              \\
+    11         & \bfseries 27 & 1           & 11          & 3              & 7              \\
+    12         & 10           & 0           & 0           & 3              & 7              \\
+    13         & \bfseries 3  & 1           & 13          & 3              & 7              \\
+    14         & \bfseries 9  & 2           & 13          & 3              & 7              \\
+    15         & \bfseries 11 & 3           & 13          & 3              & 7              \\
+    16         & \bfseries 7  & 4           & 13          & 4              & 13             \\
+    17         & \bfseries 17 & 5           & 13          & 5              & 13             \\
+    \bottomrule
+  \end{tabular}
+\end{center}

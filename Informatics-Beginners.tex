@@ -4,6 +4,7 @@
 \usepackage{nopageno}
 \usepackage{microtype}
 \usepackage{parskip}
+\usepackage{etoolbox}    % robustify, used with bfseries in table formatting
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{textcomp}    % textquotesingle
 \usepackage{graphicx}
@@ -15,6 +16,7 @@
 \usetikzlibrary{fadings}
 
 \setlength{\parskip}{\medskipamount}
+\robustify\bfseries      % https://tex.stackexchange.com/questions/66253/siunitx-bold-single-numeric-cells
 
 \newcommand{\BookVersionString}{Version 0.1.4}
 \newcommand{\BookVersionDate}{30 June 2021}
@@ -48,6 +50,8 @@
   200-area-calculator,
   200-drought,
   200-cute-numbers,
+  200-even-numbers-for-photos-1,
+  200-even-numbers-for-photos-2,
   300-overview,
   300-jogging-2,
   300-collatz-1,
@@ -109,6 +113,8 @@
 \include{200-area-calculator}
 \include{200-drought}
 \include{200-cute-numbers}
+\include{200-even-numbers-for-photos-1}
+\include{200-even-numbers-for-photos-2}
 
 % ---------------------------------------------------------------- Chapter 3: Loops (2)
 
