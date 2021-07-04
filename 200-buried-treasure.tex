@@ -1,0 +1,59 @@
+
+\questionheader{Buried treasure}
+
+\Question\ Your Pacific Islands cruise has pulled up near a small but enticing island and
+you and hundreds of other tourists have gone ashore for a day of sun, swimming and
+scoffing ``authentic'' local foods and drinks. Tiring of the tourist traps, you wander off
+the beaten path into the bush, where in addition to some peace and quiet, you find a scrap
+of paper that happens to contain a map of the island and a promise of buried treasure! No
+doubt it is fake, but with not much else to do until the dinghy returns you to the
+floating RSL at 3.30\,pm, you might as well take a closer look.
+
+The map divides the island neatly into square units. It has a list of N/S/E/W directions
+listed, and you interpret that as taking a one-unit step in the specified direction.
+So if you started at location $(4,6)$ and took steps ``N'', ``N'' and ``W'', you would end
+up at location $(3,8)$.
+
+Sometimes the direction given is the full word (North, South, East, West). Sometimes it is
+the abbreviation (N, S, E, W). Capitalisation is always consistent. If you encounter any
+instruction other than the eight specified then it is invalid.
+
+So the question is: given a starting location and a list of directions, where might the
+treasure be buried?
+
+\Input From \IN\ you will your location and a list of directions.
+
+\begin{itemize}
+  \item The first line contains $X$, the $x$-value of your location.
+  \item The second line contains $Y$, the $y$-value of your location.
+  \item The third line contains $N$, the number of directions in the list.
+  \item The next $N$ lines contain $D_i$, a direction that is either North, South, East,
+    West, N, S, E, W or else it is an invalid direction.
+\end{itemize}
+
+Note that $X$ and $Y$ are integers such that $-1000 \le X,Y \le 1000$ and $N$ is an integer
+such that $1 \le N \le 1000$.
+
+\Output\ If all the directions are valid, you will output a single line $X'\ Y'$, being
+your location after folloing the directions.
+
+If you encounter an invalid direction, you will output the single line \texttt{Invalid
+directions}.
+
+\Sample
+
+\minipagestwo{
+  \sample{0.22}{8\\-7\\6\\N\\North\\W\\N\\East\\E\\S}
+         {0.45}{9 -5}
+}{
+  \sample{0.22}{8\\-7\\6\\N\\North\\Go right\\N\\East\\E\\S}
+         {0.47}{Invalid directions}
+}
+
+\Explanation\ In the first sample, the starting position is $(8,-7)$ and the sequence
+$[N,N,W,N,\allowbreak E,E,S]$ results in a final position of $(9,-5)$. In the second
+sample, the instruction \texttt{Go right} is invalid.
+
+\Scratch\ You might like to run through the first sample on paper, completing a trace
+table with columns $i$, $dir$, $X$, and $Y$.
+
