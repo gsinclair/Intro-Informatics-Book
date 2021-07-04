@@ -38,6 +38,16 @@
 \newminted{python}{xleftmargin=2cm, linenos}
 \newmintinline[pycode]{python}{}
 
+%% % <hack> Frame all minipages, to aid in layout. Comment out when not wanted,
+%% %        which is most of the time.
+%% \let\minipagebak\minipage
+%% \let\endminipagebak\endminipage
+%% \newsavebox\TestBox
+%% \renewenvironment{minipage}[2][]
+%% {\begin{lrbox}{\TestBox}\begin{minipagebak}[#1]{#2}}
+%% {\end{minipagebak}\end{lrbox}\fbox{\usebox{\TestBox}}}
+%% % </hack>
+
 \newcommand{\sample}[4]{%
   \begin{minipage}[t]{1.2cm}
     ~~~
