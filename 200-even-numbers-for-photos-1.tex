@@ -75,30 +75,29 @@ What are we tracking in this question? We want the \emph{number of groups} and t
 
 Here is a trace table that you could try to complete.
 
-\bigskip
-\begin{center}
-  \begin{tabular}{ccccc}
+\begin{inlinetable}
+  \sisetup{detect-weight=true,detect-inline-weight=math}
+  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]ccc}
     \toprule
-    ~~i~~ & size & ngroups & npeople & \emph{output} \\
+    {~~i~~} & {size}       & {ngroups} & {npeople} & {\emph{output}} \\
     \midrule
-    --    &      &         &         &               \\
-    0     & 7    &         &         &               \\
-    1     & 8    &         &         &               \\
-    2     & 10   &         &         &               \\
-    3     & 8    &         &         &               \\
-    4     & 11   &         &         &               \\
-    5     & 13   &         &         &               \\
-    6     & 11   &         &         &               \\
-    7     & 19   &         &         &               \\
-    8     & 4    &         &         &               \\
-    9     & 9    &         &         &               \\
-    10    & 15   &         &         &               \\
-    11    & 6    &         &         &               \\
-    12    & 8    &         &         &               \\
+            &              & 0         & 0         &                 \\
+    0       & \bfseries 7  &           &           &                 \\
+    1       & 8            &           &           &                 \\
+    2       & 10           &           &           &                 \\
+    3       & 8            &           &           &                 \\
+    4       & \bfseries 11 &           &           &                 \\
+    5       & \bfseries 13 &           &           &                 \\
+    6       & \bfseries 11 &           &           &                 \\
+    7       & \bfseries 19 &           &           &                 \\
+    8       & 4            &           &           &                 \\
+    9       & \bfseries 9  &           &           &                 \\
+    10      & \bfseries 15 &           &           &                 \\
+    11      & 6            &           &           &                 \\
+    12      & 8            &           &           &                 \\
     \bottomrule
   \end{tabular}
-\end{center}
-\bigskip
+\end{inlinetable}
 
 The idea of \pycode|ngroups| is to count the groups in the \emph{current chain}. It gets
 reset when a chain finishes (i.e.~by encountering an even number). The idea of
@@ -118,30 +117,29 @@ The completed table appears on the next page for you to check your work.
 
 Here is the completed trace table.
 
-\bigskip
-\begin{center}
-  \begin{tabular}{ccccc}
+\begin{inlinetable}
+  \sisetup{detect-weight=true,detect-inline-weight=math}
+  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]S[table-format=3.0]S[table-format=3.0]c}
     \toprule
-    ~~i~~ & size & ngroups & npeople & \emph{output} \\
+    {~~i~~} & {size} & {ngroups} & {npeople} & {\emph{output}} \\
     \midrule
-    --    &      & 0       & 0       &               \\
-    0     & 7    & 1       & 7       &               \\
-    1     & 8    & 0       & 7       & \texttt{1}    \\
-    2     & 10   & 0       & 7       &               \\
-    3     & 8    & 0       & 7       &               \\
-    4     & 11   & 1       & 11      &               \\
-    5     & 13   & 2       & 24      &               \\
-    6     & 11   & 3       & 35      &               \\
-    7     & 19   & 4       & 54      &               \\
-    8     & 4    & 0       & 54      & \texttt{4}    \\
-    9     & 9    & 1       & 63      &               \\
-    10    & 15   & 2       & 78      &               \\
-    11    & 6    & 0       & 78      & \texttt{2}    \\
-    12    & 8    & 0       & 78      &               \\
+            &              & 0         & 0         &                 \\
+    0       & \bfseries 7  & 1         & 7         &                 \\
+    1       & 8            & 0         & 7         & \texttt{1}      \\
+    2       & 10           & 0         & 7         &                 \\
+    3       & 8            & 0         & 7         &                 \\
+    4       & \bfseries 11 & 1         & 11        &                 \\
+    5       & \bfseries 13 & 2         & 24        &                 \\
+    6       & \bfseries 11 & 3         & 35        &                 \\
+    7       & \bfseries 19 & 4         & 54        &                 \\
+    8       & 4            & 0         & 54        & \texttt{4}      \\
+    9       & \bfseries 9  & 1         & 63        &                 \\
+    10      & \bfseries 15 & 2         & 78        &                 \\
+    11      & 6            & 0         & 78        & \texttt{2}      \\
+    12      & 8            & 0         & 78        &                 \\
     \bottomrule
   \end{tabular}
-\end{center}
-\bigskip
+\end{inlinetable}
 
 From this table we can see the following.
 \begin{enumerate}

@@ -100,18 +100,18 @@ and build around it.
 Before we look at any code, consider the trace table we are trying to achieve, using the
 second sample as input.
 
-\begin{center}
+\begin{inlinetable}
   \begin{tabular}{cl}
     \toprule
-    position & name \\
+    position & name  \\
     \midrule
-    1 & Jenny \\
-    2 & Tonya \\
-    3 & Sandy \\
-    4 & Kevin \\
+    1        & Jenny \\
+    2        & Tonya \\
+    3        & Sandy \\
+    4        & Kevin \\
     \bottomrule
   \end{tabular}
-\end{center}
+\end{inlinetable}
 \medskip
 
 The fifth and sixth names are not shown as we would stop reading when we find
@@ -204,30 +204,30 @@ range to be.
 Here are trace tables for the two examples.
 \medskip
 
-\minipagestwo{
+\minipagestwo{%
   \begin{center}
-    \begin{tabular}{clc}
+    \begin{tabular}{cll}
       \toprule
-      position & name & found \\
+      position & name  & found \\
       \midrule
-      1 & Jenny & False\\
-      2 & Tonya & False\\
-      3 & Sandy & False\\
-      4 & Erin  & False\\
-      5 & Mike  & False\\
+      1        & Jenny & False \\
+      2        & Tonya & False \\
+      3        & Sandy & False \\
+      4        & Erin  & False \\
+      5        & Mike  & False \\
       \bottomrule
     \end{tabular}
   \end{center}
-}{
+}{%
   \begin{center}
-    \begin{tabular}{clc}
+    \begin{tabular}{cll}
       \toprule
-      position & name & found \\
+      position & name  & found \\
       \midrule
-      1 & Jenny & False\\
-      2 & Tonya & False\\
-      3 & Sandy & False\\
-      4 & Kevin & True\\
+      1        & Jenny & False \\
+      2        & Tonya & False \\
+      3        & Sandy & False \\
+      4        & Kevin & True  \\
       \bottomrule
     \end{tabular}
   \end{center}

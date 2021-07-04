@@ -168,26 +168,26 @@ Here is a logical setting out of what needs to be done. First of all, initialise
 \emph{count} to zero. Then let $f$ (called $f$ because it's a potential factor) take on
 values 1 to 12 as the table shows.
 
-\begin{center}
-  \begin{tabular}{clc}
+\begin{inlinetable}
+  \begin{tabular}{S[table-format=2.0]lc}
     \toprule
-    \bi{f} & \textbf{factor of 12?} & \bi{count} \\
+    {~~f~~} & {factor of 12?} & {count} \\
     \midrule
-    1  & \pycode|True|  & 1  \\
-    2  & \pycode|True|  & 2  \\
-    3  & \pycode|True|  & 3  \\
-    4  & \pycode|True|  & 4  \\
-    5  & \pycode|False| &    \\
-    6  & \pycode|True|  & 5  \\
-    7  & \pycode|False| &    \\
-    8  & \pycode|False| &    \\
-    9  & \pycode|False| &    \\
-    10 & \pycode|False| &    \\
-    11 & \pycode|False| &    \\
-    12 & \pycode|True|  & 6  \\
+    1       & \pycode|True|   & 1       \\
+    2       & \pycode|True|   & 2       \\
+    3       & \pycode|True|   & 3       \\
+    4       & \pycode|True|   & 4       \\
+    5       & \pycode|False|  &         \\
+    6       & \pycode|True|   & 5       \\
+    7       & \pycode|False|  &         \\
+    8       & \pycode|False|  &         \\
+    9       & \pycode|False|  &         \\
+    10      & \pycode|False|  &         \\
+    11      & \pycode|False|  &         \\
+    12      & \pycode|True|   & 6       \\
     \bottomrule
   \end{tabular}
-\end{center}
+\end{inlinetable}
 
 When the loop has completed, we have $count = 6$ and that is the answer we write to \OUT.
 

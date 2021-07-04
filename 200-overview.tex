@@ -152,23 +152,23 @@ It is worth looking at a \emph{trace table} of this algorithm. Sketching such a 
 the data used in the first sample. The $i$ column is included to show the looping but
 rendered in grey because we don't actually use this variable.
 
-\begin{center}
-  \begin{tabular}{lll}
+\begin{inlinetable}
+  \begin{tabular}{c S[table-format=3.0] S[table-format=3.0]}
     \toprule
-    \emph{i\quad} & \emph{height} & \emph{maxheight} \\
+    {~~i~~} & {height} & {maxheight} \\
     \midrule
-    -        & -             & 0                \\
-    \grey{0} & 165           & 165              \\
-    \grey{1} & 177           & 177              \\
-    \grey{2} & 172           &                  \\
-    \grey{3} & 180           & 180              \\
-    \grey{4} & 175           &                  \\
-    \grey{5} & 179           &                  \\
-    \grey{6} & 181           & 181              \\
-    \grey{7} & 180           &                  \\
+             &          & 0           \\
+    \grey{0} & 165      & 165         \\
+    \grey{1} & 177      & 177         \\
+    \grey{2} & 172      &             \\
+    \grey{3} & 180      & 180         \\
+    \grey{4} & 175      &             \\
+    \grey{5} & 179      &             \\
+    \grey{6} & 181      & 181         \\
+    \grey{7} & 180      &             \\
     \bottomrule
   \end{tabular}
-\end{center}
+\end{inlinetable}
 
 The \emph{maxheight} column shows exactly when that variable is updated, which occurs in
-Line~8.
+Line~8 of the code.
