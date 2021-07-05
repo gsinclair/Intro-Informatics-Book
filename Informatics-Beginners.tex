@@ -1,7 +1,6 @@
 \documentclass[11pt,a4paper]{book}
 
 \usepackage[bottom=0.9in,top=0.85in,left=1in,right=1in]{geometry}
-\usepackage{nopageno}
 \usepackage{microtype}
 \usepackage{parskip}
 \usepackage{etoolbox}    % robustify, used with bfseries in table formatting
@@ -15,11 +14,13 @@
 \usepackage{tikz}        % tikz and fadings used in title page
 \usetikzlibrary{fadings}
 
+\pagestyle{plain}
+
 \setlength{\parskip}{\medskipamount}
 \robustify\bfseries      % https://tex.stackexchange.com/questions/66253/siunitx-bold-single-numeric-cells
 
-\newcommand{\BookVersionString}{Version 0.1.4}
-\newcommand{\BookVersionDate}{30 June 2021}
+\newcommand{\BookVersionString}{Version 0.2}
+\newcommand{\BookVersionDate}{5 July 2021}
 \newcommand{\BookDownloadText}{Find the latest version at \texttt{bit.ly/hsifcb}}
 
 % ------------------------------------------------------------- Commands & Includes
