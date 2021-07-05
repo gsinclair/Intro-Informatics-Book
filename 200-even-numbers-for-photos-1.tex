@@ -19,11 +19,8 @@ in some creative rearranging. For instance, the list might read: \[
 \]
 
 In this list, you are interested in the bolded chains, which have lengths 1, 4 and 2,
-respectively. You are also interested in:
-\begin{itemize}
-  \item the total number of such groups (in this case, 7); and
-  \item the total number of people involved in these photos (in this case, 85).
-\end{itemize}
+respectively. You are also interested in the total number of people involved in these
+photos (in this case, 85).
 
 Knowing these things won't solve all your problems, but it's a start.
 
@@ -32,28 +29,26 @@ follow. The next $N$ lines each contain a positive integer $P_i$, each of which 
 number of people planned to be in a photograph.
 
 \Output\ You will output the \emph{length of each chain} of odd-numbered photographs.
-After this, leave a blank line, and output the number of photos containing an odd number
-of people, and the total number of people in these photos, on one line as shown in the
-samples.
+After this, output the total number of people in these photos, as shown in the samples.
 
 \Sample
 
 \minipagesthree{
   \sample{0.3}{13\\7\\8\\10\\8\\11\\13\\11\\19\\4\\9\\15\\6\\8}
-         {0.3}{1\\4\\2\\\ \\7:85}
+         {0.4}{1\\4\\2\\Total:\ 85}
 }{
   \sample{0.3}{6\\5\\3\\4\\8\\6\\3}
-         {0.3}{2\\1\\\ \\3:14}
+         {0.4}{2\\1\\Total:\ 11}
 }{
   \sample{0.3}{7\\4\\6\\4\\2\\6\\4\\6}
-         {0.3}{\ \\0:0}
+         {0.4}{Total:\ 0}
 }
 
 \Explanation\ The first sample represents the example given in the question. The second
 sample has odd chains $[5,3]$ and $[3]$, hence the output \texttt{2} and \texttt{1}. The
-summary for the second sample is three groups totalling 14 people, hence \texttt{3:14}.
+summary for the second sample is three groups totalling 11 people, hence \texttt{Total:\ 11}.
 The third sample has no groups with an odd number of people, so there are no chains to
-report. There is still a blank line before the summary \texttt{0:0}, though.
+report. A total is still provided, though.
 
 \Scratch\ Try creating and completing a trace table for the first sample before
 continuing. A hint is given over the page.
@@ -70,43 +65,50 @@ We assume the code structure shown below.
     # ...
 \end{pythoncode}
 
-What are we tracking in this question? We want the \emph{number of groups} and the
-\emph{number of people}, which suggests variables \pycode|ngroups| and \pycode|npeople|.
+What are we tracking in this question?
+\begin{enumerate}
+  \item Whether we are currently in an odd chain.
+  \item (If so,) the number of groups in this chain so far.
+  \item The number of people in odd groups overall.
+\end{enumerate}
+
+The first item is a boolean flag (\pycode|True| or \pycode|False|), which we can just call
+\pycode|flag|. The other items suggest variables \pycode|ngroups| and \pycode|npeople|.
 
 Here is a trace table that you could try to complete.
 
 \begin{inlinetable}
   \sisetup{detect-weight=true,detect-inline-weight=math}
-  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]ccc}
+  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]cccc}
     \toprule
-    {~~i~~} & {size}       & {ngroups} & {npeople} & {\emph{output}} \\
+    {~~i~~} & {size}       & {f{}lag} & {ngroups} & {npeople} & {\emph{output}} \\
     \midrule
-            &              & 0         & 0         &                 \\
-    0       & \bfseries 7  &           &           &                 \\
-    1       & 8            &           &           &                 \\
-    2       & 10           &           &           &                 \\
-    3       & 8            &           &           &                 \\
-    4       & \bfseries 11 &           &           &                 \\
-    5       & \bfseries 13 &           &           &                 \\
-    6       & \bfseries 11 &           &           &                 \\
-    7       & \bfseries 19 &           &           &                 \\
-    8       & 4            &           &           &                 \\
-    9       & \bfseries 9  &           &           &                 \\
-    10      & \bfseries 15 &           &           &                 \\
-    11      & 6            &           &           &                 \\
-    12      & 8            &           &           &                 \\
+            &              & False    & 0         & 0         &                 \\
+    0       & \bfseries 7  &          &           &           &                 \\
+    1       & 8            &          &           &           &                 \\
+    2       & 10           &          &           &           &                 \\
+    3       & 8            &          &           &           &                 \\
+    4       & \bfseries 11 &          &           &           &                 \\
+    5       & \bfseries 13 &          &           &           &                 \\
+    6       & \bfseries 11 &          &           &           &                 \\
+    7       & \bfseries 19 &          &           &           &                 \\
+    8       & 4            &          &           &           &                 \\
+    9       & \bfseries 9  &          &           &           &                 \\
+    10      & \bfseries 15 &          &           &           &                 \\
+    11      & 6            &          &           &           &                 \\
+    12      & 8            &          &           &           &                 \\
     \bottomrule
   \end{tabular}
 \end{inlinetable}
 
-The idea of \pycode|ngroups| is to count the groups in the \emph{current chain}. It gets
-reset when a chain finishes (i.e.~by encountering an even number). The idea of
-\pycode|npeople| is to sum the people in relevant groups as you go through the data. This
-variable does not get reset.
+The idea of \pycode|ngroups| is to count the groups in the \emph{current chain of
+odd-peopled photographs}. It gets reset when a chain finishes (i.e.~by encountering an
+even number). The idea of \pycode|npeople| is to sum the people in relevant groups as you
+go through the data. This variable does not get reset.
 
 The column \emph{output} has not been seen before. The output from the program does not
 all need to be produced at the end. In this program (and with this data), the summary
-\texttt{7:91} will be produced at the end, but the rest of the output (\texttt{1 4 2} on
+\texttt{7:91} will be produced at the end, but the rest of the output (\texttt{1\ 4\ 2} on
 separate lines) will be produced as we go.
 
 The completed table appears on the next page for you to check your work.
@@ -119,24 +121,25 @@ Here is the completed trace table.
 
 \begin{inlinetable}
   \sisetup{detect-weight=true,detect-inline-weight=math}
-  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]S[table-format=3.0]S[table-format=3.0]c}
+  \begin{tabular}{S[table-format=2.0] S[table-format=2.0] c S[table-format=3.0]
+                  S[table-format=3.0] c}
     \toprule
-    {~~i~~} & {size} & {ngroups} & {npeople} & {\emph{output}} \\
-    \midrule
-            &              & 0         & 0         &                 \\
-    0       & \bfseries 7  & 1         & 7         &                 \\
-    1       & 8            & 0         & 7         & \texttt{1}      \\
-    2       & 10           & 0         & 7         &                 \\
-    3       & 8            & 0         & 7         &                 \\
-    4       & \bfseries 11 & 1         & 11        &                 \\
-    5       & \bfseries 13 & 2         & 24        &                 \\
-    6       & \bfseries 11 & 3         & 35        &                 \\
-    7       & \bfseries 19 & 4         & 54        &                 \\
-    8       & 4            & 0         & 54        & \texttt{4}      \\
-    9       & \bfseries 9  & 1         & 63        &                 \\
-    10      & \bfseries 15 & 2         & 78        &                 \\
-    11      & 6            & 0         & 78        & \texttt{2}      \\
-    12      & 8            & 0         & 78        &                 \\
+    {~~i~~} & {size}       & {f{}lag} & {ngroups} & {npeople} & {\emph{output}} \\
+    \midrule                          
+            &              & False    & 0         & 0         &                 \\
+    0       & \bfseries 7  & True     & 1         & 7         &                 \\
+    1       & 8            & False    & 0         & 7         & \texttt{1}      \\
+    2       & 10           & False    & 0         & 7         &                 \\
+    3       & 8            & False    & 0         & 7         &                 \\
+    4       & \bfseries 11 & True     & 1         & 18        &                 \\
+    5       & \bfseries 13 & True     & 2         & 31        &                 \\
+    6       & \bfseries 11 & True     & 3         & 42        &                 \\
+    7       & \bfseries 19 & True     & 4         & 61        &                 \\
+    8       & 4            & False    & 0         & 61        & \texttt{4}      \\
+    9       & \bfseries 9  & True     & 1         & 70        &                 \\
+    10      & \bfseries 15 & True     & 2         & 85        &                 \\
+    11      & 6            & False    & 0         & 85        & \texttt{2}      \\
+    12      & 8            & False    & 0         & 85        &                 \\
     \bottomrule
   \end{tabular}
 \end{inlinetable}
@@ -150,9 +153,15 @@ From this table we can see the following.
     sent to the output.
 \end{enumerate}
 
+This suggests that we are looking for the moment when \pycode|flag| changes from
+\pycode|True| to \pycode|False|.
+
 The sample data considered above is not in the middle of an odd chain when the data
 terminates. If it were, you'd need to ensure that the size of the final chain was included
 in the output. The second sample captures this occurrence.
+
+Implementing this is hard compared to the earlier exercises, and a successful
+implementation may take around 20 lines of code.
 
 \bigskip
 \textbf{When coding your solution}, you need to know whether a number is even or odd. This

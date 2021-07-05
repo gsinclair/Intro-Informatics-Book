@@ -52,15 +52,16 @@ position in the list of data, so we can use that approach again:
 
 The values we need to track this time are:
 \begin{itemize}
+  \item a flag for whether we are in an odd chain or not (same as last time);
   \item the length of the current chain;
   \item the starting location of the current chain;
   \item the length of the longest chain seen so far; and
   \item the starting location of the longest chain seen so far.
 \end{itemize}
 
-Suggested variables then are \pycode|curr_len| (playing the same role as \pycode|ngroups|
-did in the previous question), \pycode|curr_loc| \pycode|longest_len| and
-\pycode|longest_loc|.
+Suggested variables then, in addition to \pycode|flag|, are \pycode|curr_len| (playing the
+same role as \pycode|ngroups| did in the previous question), \pycode|curr_loc|
+\pycode|longest_len| and \pycode|longest_loc|.
 
 You might try to construct and complete a trace table before continuing. A completed trace
 table is shown on the next page.
@@ -73,25 +74,25 @@ Here is the completed trace table.
 
 \begin{inlinetable}
   \sisetup{detect-weight=true,detect-inline-weight=math}
-  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]
-    S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]}
+  \begin{tabular}{S[table-format=2.0] S[table-format=2.0] c S[table-format=2.0]
+    S[table-format=2.0] S[table-format=2.0] S[table-format=2.0]}
     \toprule
-    {position} & {size}       & {curr\_len} & {curr\_loc} & {longest\_len} & {longest\_loc} \\
-    \midrule
-               &              & 0           & 0           & 0              & 0              \\
-    1          & \bfseries 7  & 1           & 1           & 1              & 1              \\
-    2          & 8            & 0           & 0           & 1              & 1              \\
-    3          & 10           & 0           & 0           & 1              & 1              \\
-    4          & 8            & 0           & 0           & 1              & 1              \\
-    5          & \bfseries 11 & 1           & 5           & 1              & 1              \\
-    6          & \bfseries 13 & 2           & 5           & 2              & 5              \\
-    7          & \bfseries 11 & 3           & 5           & 3              & 5              \\
-    8          & \bfseries 19 & 4           & 5           & 4              & 5              \\
-    9          & 4            & 0           & 0           & 4              & 5              \\
-    10         & 9            & 1           & 10          & 4              & 5              \\
-    11         & \bfseries 15 & 2           & 10          & 4              & 5              \\
-    12         & 6            & 0           & 0           & 4              & 5              \\
-    13         & 8            & 0           & 0           & 4              & 5              \\
+    {position} & {size}       & {f{}lag} & {curr\_len} & {curr\_loc} & {longest\_len} & {longest\_loc} \\
+    \midrule                             
+               &              & False    & 0           & 0           & 0              & 0              \\
+    1          & \bfseries 7  & True     & 1           & 1           & 1              & 1              \\
+    2          & 8            & False    & 0           & 0           & 1              & 1              \\
+    3          & 10           & False    & 0           & 0           & 1              & 1              \\
+    4          & 8            & False    & 0           & 0           & 1              & 1              \\
+    5          & \bfseries 11 & True     & 1           & 5           & 1              & 1              \\
+    6          & \bfseries 13 & True     & 2           & 5           & 2              & 5              \\
+    7          & \bfseries 11 & True     & 3           & 5           & 3              & 5              \\
+    8          & \bfseries 19 & True     & 4           & 5           & 4              & 5              \\
+    9          & 4            & False    & 0           & 0           & 4              & 5              \\
+    10         & 9            & False    & 1           & 10          & 4              & 5              \\
+    11         & \bfseries 15 & True     & 2           & 10          & 4              & 5              \\
+    12         & 6            & False    & 0           & 0           & 4              & 5              \\
+    13         & 8            & False    & 0           & 0           & 4              & 5              \\
     \bottomrule
   \end{tabular}
 \end{inlinetable}
@@ -118,29 +119,29 @@ Here is the completed trace table for the longer sample data.
 
 \begin{inlinetable}
   \sisetup{detect-weight=true,detect-inline-weight=math}
-  \begin{tabular}{S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]
-    S[table-format=2.0]S[table-format=2.0]S[table-format=2.0]}
+  \begin{tabular}{S[table-format=2.0] S[table-format=2.0] c S[table-format=2.0]
+    S[table-format=2.0] S[table-format=2.0] S[table-format=2.0]}
     \toprule
-    {position} & {size}       & {curr\_len} & {curr\_loc} & {longest\_len} & {longest\_loc} \\
-    \midrule
-               &              & 0           & 0           & 0              & 0              \\
-    1          & 14           & 0           & 0           & 0              & 0              \\
-    2          & 8            & 0           & 0           & 0              & 0              \\
-    3          & \bfseries 9  & 1           & 3           & 1              & 3              \\
-    4          & \bfseries 15 & 2           & 3           & 2              & 3              \\
-    5          & 10           & 0           & 0           & 2              & 3              \\
-    6          & 22           & 0           & 0           & 2              & 3              \\
-    7          & \bfseries 5  & 1           & 7           & 2              & 3              \\
-    8          & \bfseries 21 & 2           & 7           & 2              & 3              \\
-    9          & \bfseries 17 & 3           & 7           & 3              & 7              \\
-    10         & 8            & 0           & 0           & 3              & 7              \\
-    11         & \bfseries 27 & 1           & 11          & 3              & 7              \\
-    12         & 10           & 0           & 0           & 3              & 7              \\
-    13         & \bfseries 3  & 1           & 13          & 3              & 7              \\
-    14         & \bfseries 9  & 2           & 13          & 3              & 7              \\
-    15         & \bfseries 11 & 3           & 13          & 3              & 7              \\
-    16         & \bfseries 7  & 4           & 13          & 4              & 13             \\
-    17         & \bfseries 17 & 5           & 13          & 5              & 13             \\
+    {position} & {size}       & {f{}lag} & {curr\_len} & {curr\_loc} & {longest\_len} & {longest\_loc} \\
+    \midrule                             
+               &              & False    & 0           & 0           & 0              & 0              \\
+    1          & 14           & False    & 0           & 0           & 0              & 0              \\
+    2          & 8            & False    & 0           & 0           & 0              & 0              \\
+    3          & \bfseries 9  & True     & 1           & 3           & 1              & 3              \\
+    4          & \bfseries 15 & True     & 2           & 3           & 2              & 3              \\
+    5          & 10           & False    & 0           & 0           & 2              & 3              \\
+    6          & 22           & False    & 0           & 0           & 2              & 3              \\
+    7          & \bfseries 5  & True     & 1           & 7           & 2              & 3              \\
+    8          & \bfseries 21 & True     & 2           & 7           & 2              & 3              \\
+    9          & \bfseries 17 & True     & 3           & 7           & 3              & 7              \\
+    10         & 8            & False    & 0           & 0           & 3              & 7              \\
+    11         & \bfseries 27 & True     & 1           & 11          & 3              & 7              \\
+    12         & 10           & False    & 0           & 0           & 3              & 7              \\
+    13         & \bfseries 3  & True     & 1           & 13          & 3              & 7              \\
+    14         & \bfseries 9  & True     & 2           & 13          & 3              & 7              \\
+    15         & \bfseries 11 & True     & 3           & 13          & 3              & 7              \\
+    16         & \bfseries 7  & True     & 4           & 13          & 4              & 13             \\
+    17         & \bfseries 17 & True     & 5           & 13          & 5              & 13             \\
     \bottomrule
   \end{tabular}
 \end{inlinetable}
