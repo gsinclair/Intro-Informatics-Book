@@ -1,0 +1,24 @@
+
+\begin{tcolorbox}
+  {\color{BrickRed}\large\bfseries How to keep your book, code and data up to date}
+
+  \paragraph{Book} The version number of the book is on the title page (or here: it is
+  \BookVersionString). You can look for the latest version at \url{\BitLyBook}.
+  When you run \texttt{l.update()}, it will tell you the most recent available version.
+
+  \paragraph{Code} When you have a working \learninformatics\ environment, you can almost
+  always update the code by typing \texttt{l.update()}. If there is a problem, you should
+  manually replace the contents of \texttt{learninformatics.py} with
+  \url{\BitLyCode}.
+
+  \paragraph{Data} The data to support the judging of exercises lives in
+  \texttt{DATA.txt}. This is always obtained and updated by typing \texttt{l.update()}.
+
+  \bigskip
+  Your exercises live in \texttt{main.py} and will never be affected by
+  running an update.
+\end{tcolorbox}
+
+\paragraph{A special note for 0.2 users, 6 July 2021} Version 2.0 of the sofware and data
+introduced a technology called YAML, which unfortunately does not work out-of-the-box with
+replit.com. There might be a bit of manual updating required as I fix this issue.

@@ -30,18 +30,17 @@ problems, akin to finding the shortest path through a maze or solving a Rubik's 
 \paragraph{How to use this book} Each chapter contains some teaching material, one or two
 fully worked examples, and some exercises. Read the teaching material carefully and try
 out its code examples. All exercises, including the worked examples, are numbered, and you
-will use the \textbf{learninformatics} Python environment to complete the exercises and
+will use the \textbf{\learninformatics} Python environment to complete the exercises and
 have them confirmed as correct.
 
-\paragraph{What is the \textbf{learninformatics} environment?} It's a supplement to your
-Python coding environment that marks your work. Say you are working on Exercise 205. To
-run your code with your own input, type \textbf{l.run(205)}. To test it against the sample
-data and get informative errors, type \textbf{l.test(205)}. To have it marked against a
-wider range of data, type \textbf{l.judge(205)}. In short, the learninformatics
-environment allows you to focus more on learning and less on mucking around with inputs,
-outputs and submitting.
+\paragraph{What is the \learninformatics{} environment?} It's a Python module that marks
+your work. Say you are working on Exercise 205. To run your code with your own input, type
+\textbf{l.run(205)}. To test it against the sample data and get informative errors, type
+\textbf{l.test(205)}. To have it marked against a wider range of data, type
+\textbf{l.judge(205)}. In short, the \learninformatics{} environment allows you to focus
+more on learning and less on mucking around with inputs, outputs and submitting.
 
-\paragraph{Setting up the learninformatics environment} Full instructions follow, but the
+\paragraph{Setting up the \learninformatics{} environment} Full instructions follow, but the
 information is best conveyed by a demonstration. See the video at \futurereference{YouTube
 link}.
 
@@ -49,36 +48,37 @@ While it is possible to use a Python environment on your own computer, we prefer
 outline the simpler approach of using the website \textbf{replit.com}.
 
 \begin{enumerate}
-  \item Log in to your account on replit.com, or create one if you don't already have one.
-    If it asks for your preferred languages, chooose Python, Ruby and Clojure.
+  \item Log in to your account on \url{replit.com}, or create one if you don't already
+    have one.  If it asks for your preferred languages, chooose Python, Ruby and Clojure.
   \item Create a new repl%
 \footnote{repl is an initialism for read-eval-print-loop. It really means an interactive
   programming environment.}
     in the Python language. Title it \emph{LearnInformatics}.
   \item Create a file in your repl called \texttt{learninformatics.py}.
-  \item Go to the URL footnoted,%
-\footnote{\texttt{https://raw.githubusercontent.com/gsinclair/learninformatics/master/learninformatics.py}}
-    copy all of the text, and paste it into the file you just created.
-  \item In \texttt{main.py}, type: \pycode|import learninformatics as l|
+  \item Copy all the text from \url{\BitLyCode} and paste it into the file you just created.
+  \item In \texttt{main.py}, type: \pycode|import learninformatics as l|.
+    {\small\color{Fuchsia}That's l for lemon, not one.}
   \item Run your code with the green Run button.
   \item In the \emph{Console}, type \texttt{l.update()} and hit Enter/Return. This will
     create the file \texttt{DATA.txt} in your project. You can run \texttt{l.update()} at
-    any time to ensure you have the latest data (and code).
+    any time to ensure your \texttt{DATA.txt} and \texttt{learninformatics.py} files are
+    up to date.
 \end{enumerate}
 
 You should now be ready to go.
 
-\paragraph{Using the learninformatics environment} You'll get the hang of it by following
+\paragraph{Using the \learninformatics{} environment} You'll get the hang of it by following
 instructions later on, but here is a summary. Say you are working on exercise 205. You
-will add the following to \texttt{main.py}:%
-\footnote{Your code will accrete many small sections like this: \pycode|ex101|,
-  \pycode|ex102|, ...}
+will add the following to \texttt{main.py}:
 \begin{pythoncode}
   def ex205(IN, OUT):
     # Get input data from IN.
     # Solve the problem.
     # Write the answer to OUT.
 \end{pythoncode}
+
+(Note that answering all the exercises in one code file is a major benefit of this
+system.)
 
 When you \emph{Run} your code, nothing will happen, because all you have is a bunch of
 definitions. But in the \emph{Console} you can type \pycode|l.test(205)| and it will
@@ -93,26 +93,26 @@ marking.
 
 Here are example commands and what they do:
 \begin{center}
-  \begin{tabular}{lp{10cm}}
+  \begin{tabular}{lp{12cm}}
     \toprule
     \textbf{Command}        & \textbf{Action} \\
     \midrule
     \texttt{l.run(205)}     & Run your function \texttt{ex205} interactively, taking
                               input from the keyboard and sending output to the
-                              screen.\\[3pt]
-    \texttt{l.run(example)} & Run your function \texttt{example} interactively.\\[3pt]
+                              screen.\\[2pt]
+    \texttt{l.run(example)} & Run your function \texttt{example} interactively.\\[2pt]
     \texttt{l.test(205)}    & Run your function \texttt{ex205}, using the sample data
                               set(s) as input and checking that your code generates
-                              the correct output.\\[3pt]
+                              the correct output.\\[2pt]
     \texttt{l.judge(205)}   & Run your function \texttt{ex205} multiple times, using a
                               variety of (secret) data sets and checking that your code
-                              generates the correct output in all cases.\\
+                              generates the correct output in all cases.\\[2pt]
     \midrule
     \texttt{l.info()}       & Show some information about the learninformatics
                               environment: software version, data version, available
-                              exercises.\\
-    \texttt{l.exercises()}  & Show detailed information about exercises.\\
-    \texttt{l.update()}     & Update to the latest available data and software.\\
+                              exercises.\\[2pt]
+    \texttt{l.exercises()}  & Show detailed information about exercises.\\[2pt]
+    \texttt{l.update()}     & Update to the latest available data and software.\\[2pt]
     \midrule
     \texttt{l.help()}       & List and explain the available commands.\\
     \bottomrule
