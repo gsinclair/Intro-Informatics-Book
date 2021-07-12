@@ -1,0 +1,44 @@
+
+\questionheader{Don't touch the cracks}
+
+\Question\ You are standing on an endless path made up of square tiles. A boring person
+might simply walk along it without batting an eyelid. But you know that stepping on any of
+the cracks between the tiles would simply be a crime.
+
+Thus, you take steps in the following manner:
+\begin{itemize}
+  \item Most of the time, you take steps one tile at a time.
+  \item But every 12 steps, you decide to perform a hop-skip-jump. This involves a hop on
+    the same tile, a skip over the next tile, and a jump over the next three tiles. Each
+    component of this hop-skip-jump counts as one step.
+  \item Every 40 steps, you get tired - so you will pause and take a step back to the
+    previous tile. If you happen to be in the middle of a hop-skip-jump or about to start
+    one, the hop-skip-jump will be interrupted. You will not continue with an interrupted
+    hop-skip-jump.
+\end{itemize}
+
+Your first step is on the first tile. How many steps will it take you to advance $N$
+tiles?
+
+\Input\ \IN\ contains a single positive integer $N$.
+
+\Output\ You will write a single integer to \OUT: the total number of steps it will take
+you to advance (at least) $N$ tiles.
+
+\Sample
+
+\minipagestwo{%
+  \sample{0.2}{18}
+         {0.2}{15}}{%
+  \sample{0.2}{15}
+         {0.2}{14}}
+
+\Explanation In the first sample, you advance 11 tiles one step at a time. Then, on the
+12th step, you begin the hop-skip-jump with a hop on the same tile. On the 13th step, you
+skip over the next tile so that you have advanced 13 tiles so far. On the 14th step, you
+jump over the next three tiles so that you have advanced 17 tiles so far. With one more
+step (the 15th), you reach the target tile. Hence the answer is 15.
+
+In the second sample, steps 1--12 are the same as before. On the 13th step, you have not
+yet reached 15 tiles. However, on the 14th step when you jump over the next three tiles,
+you land on the 17th tile. Therefore, it took you 14 steps to advance 15 tiles.

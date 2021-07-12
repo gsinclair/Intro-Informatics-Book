@@ -9,3 +9,5 @@ Informatics-Beginners.pdf
 *.fdb_latexmk
 *.out
 *.pyg
+.DS_Store
+*.synctex.gz

@@ -1,0 +1,46 @@
+
+\questionheader{Diamond Hands}
+
+\Question\ Plebcoin (\$PLC) is the newest cryptocurrency soaring to the moon. Your friends have all sold out since the last price crash, but you on the other hand, have diamond  hands.  That means you NEVER sell, and when Plebcoin is performing well, you buy MORE.
+
+Since you're such a shrewd investor, you monitor performance by looking at Plebcoin's average price every hour. If the average price in the last 3 hours exceeds 1.37 AUD, you will buy 1 more Plebcoin.
+
+Given the prices of Plebcoin over the past $N$ hours, calculate the number of Plebcoin you buy over that period, as well as the amount of cash you spent.
+
+\Input
+The input is formatted as follows:
+\begin{itemize}
+    \item $N$, the number of hours 
+    \item $N$ lines, where each line contains $price_i$, which is the price of Plebcoin at the $i$th hour
+\end{itemize}
+
+$N$ is an integer where $N \ge 3$.
+$price_i$ is a decimal value to 2 decimal places.
+
+\Output\ You will write two lines to \OUT. The first line is an integer denoting the number of Plebcoin you buy during this period. The second line is a decimal value denoting the amount of money you have spent on Plebcoin in this period.
+
+\Sample
+
+\minipagestwo{%
+    \sample{0.4}{5\\2.36\\0.01\\1.43\\10.44\\0.99}
+            {0.4}{2\\11.43}}{%
+    \sample{0.4}{6\\1.37\\1.37\\1.37\\1.35\\1.39\\1.37}
+            {0.4}{0\\0}}
+
+
+\Explanation In the first sample, the 3-hour averages are as follows:
+\begin{itemize}
+    \item Hour 3: 1.27
+    \item Hour 4: 3.96
+    \item Hour 5: 4.29
+\end{itemize}
+Therefore, you decide to buy at hours 4 and 5. At hour 4, Plebcoin is worth 10.44 AUD, and at hour 5 it is worth 0.99 AUD. Therefore, you bought $2$ Plebcoins for $10.44 + 0.99 = 11.43$ AUD.
+
+In the second example, the 3-hour averages are as follows:
+\begin{itemize}
+    \item Hour 3: 1.37
+    \item Hour 4: 1.36
+    \item Hour 5: 1.37
+    \item Hour 6: 1.37
+\end{itemize}
+In this time, the 3-hour average never rises above 1.37 AUD. Therefore, you do not buy any Plebcoin and do not spend any cash.

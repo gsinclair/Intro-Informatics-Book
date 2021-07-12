@@ -1,0 +1,46 @@
+
+\questionheader{Stairway to heaven}
+
+\Question\ You are at the bottom of a stairway leading up to the pearly gates of heaven.
+There are $N$ steps in this staircase.
+
+Since these are such special stairs, it would be a bit boring to just walk up them one
+step at a time, wouldn't it? At each stair, you can choose to ascend either one step or
+two. (You are unfortunately not tall enough to reach any further in one go.)
+
+How many possible ways are there to go up $N$ steps to get to heaven?
+
+\Input The input contains a single number, $N$, which is the number of stairs in the
+stairway to heaven. You are guaranteed that $3 \le N \le 100$.
+
+\Output\ You will write a single integer to \OUT: the number of ways to ascend the $N$
+stairs.
+
+\Sample
+\minipagestwo{%
+  \sample{0.2}{3}
+         {0.2}{3}}{%
+  \sample{0.2}{5}
+         {0.2}{8}}
+
+\Explanation In the first sample, you can go up three stairs the following ways:
+\begin{itemize}
+  \item 1 step, 1 step, 1 step
+  \item 1 step, 2 steps
+  \item 2 steps, 1 step
+\end{itemize}
+That's a total of three ways, hence the output \texttt{3}.
+
+In the second sample, you can go up five stairs the following ways:
+\begin{itemize}
+  \item 1 step, 1 step, 1 step, 1 step, 1 step
+  \item 1 step, 2 steps, 2 steps
+  \item 1 step, 2 steps, 1 step, 1 step
+  \item 1 step, 1 step, 2 steps, 1 step
+  \item 1 step, 1 step, 1 step, 2 steps
+  \item 2 steps, 2 steps, 1 step
+  \item 2 steps, 1 step, 2 steps
+  \item 2 steps, 1 step, 1 step, 1 step
+\end{itemize}
+That's a total of eight ways, hence the output \texttt{8}.
+
