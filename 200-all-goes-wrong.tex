@@ -1,0 +1,54 @@
+\questionheader{All Goes Wrong}
+
+\Question\ Rebecca has to travel through a grid to her desgination, which is 3km
+to the east and 3km to the north of her current position. John sends her $D$ directions
+electronically. He uses:
+
+\begin{itemize}
+    \item N to indicate travel 1 kilometre to the north
+    \item S to indicate travel 1 kilometre to the south
+    \item E to indicate travel 1 kilometre to the east
+    \item W to indicate travel 1 kilometre to the west
+\end{itemize}
+
+However, it is a complicated route. Further, there is a glitch in the system and
+from some point all instructures from then on are reversed, with N becoming S, 
+S becoming N, W becoming E, and E becoming W.
+
+After how many instructions did the glitch occur?
+
+\Input
+
+The input is formatted as follows:
+\begin{itemize}
+    \item $D$, the number of directions being sent by John;
+    \item $D$ lines of directions (either N, S, E or W) in the order sent by John.
+\end{itemize}
+
+You can be guaranteed that $D$ is a positive integer such that $D > 6$.
+
+\Output\ You will write a single integer to \OUT, that being the number of instructions
+after which the glitch occurred.
+
+\Sample
+
+\minipagestwo{%
+  \sample{0.4}{16\\E\\E\\N\\W\\W\\W\\N\\W\\S\\W\\S\\W\\N\\N\\W}
+         {0.4}{7} }{%
+  \sample{0.4}{18\\W\\S\\S\\E\\W\\N\\E\\N\\S\\N\\N\\S\\E\\S\\W\\W\\W\\W}
+         {0.4}{11} }
+
+\Explanation In the first example, the glitch occurs after the 7th instruction.
+This means that the correct sequence of instructions should have been:
+
+EENWWWN\textcolor{red}{ENNENESSE}
+
+This allows Rebecca to reach a position 3km east and 3km north of her starting point.
+
+In the second example, the glitch occurs after the 11th instruction. In this case,
+the correct sequence of instructions is:
+
+WSSEWNENSNN\textcolor{red}{NWNEEEE}
+
+Again, this would result in Rebecca reaching a position 3km east and 3km north of her starting point.
+

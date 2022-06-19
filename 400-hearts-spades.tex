@@ -1,0 +1,71 @@
+\questionheader{Hearts/Spades}
+
+\Question\ You have a line of cards consisting of hearts on one side and spades
+on the other. A heart card is represented by $H$, and a spades card is represented
+by $S$. You are allowed to choose a card and flip that card and all of the cards 
+to the right of it. For instance, if you chose the 4th card in the next line
+you would flip the rightmost 6 cards:
+
+H H S S H H S S S $\rightarrow$
+
+H H S H S S H H H
+
+How many cards should you flip to get the greatest number of spades in the line?
+
+\Input
+
+The input contains the following:
+\begin{itemize}
+    \item $N$, the total number of cards that you have;
+    \item $N$ lines containing either $H$ or $S$ to indicate the card in that position.
+\end{itemize}
+
+You are guaranteed that $N$ is an integer such that $N > 0$.
+
+\Output\ Write a single integer to \OUT, which represents the number of cards that
+needs to be flipped to get the greatest number of spades in the line.
+
+\Sample
+\minipagestwo{%
+  \sample{0.4}{14\\H\\S\\H\\H\\S\\S\\H\\S\\S\\H\\H\\S\\H\\H}
+         {0.4}{9} }{%
+  \sample{0.4}{5\\S\\S\\S\\H\\S}
+         {0.4}{2} }
+
+\Explanation For the first example, the following flips will result in the whole
+line being spades:
+
+\begin{inlinetable*}
+    \begin{tabular}{cc}
+        \toprule
+        Flipped card & Line \\
+        \midrule
+        1st &  S H S S H H S H H S S H S S \\
+        2nd &  S S H H S S H S S H H S H H \\
+        3rd &  S S S S H H S H H S S H S S \\
+        5th &  S S S S S S H S S H H S H H \\
+        7th &  S S S S S S S H H S S H S S \\
+        8th &  S S S S S S S S S H H S H H \\
+        10th & S S S S S S S S S S S H S S \\
+        12th & S S S S S S S S S S S S H H \\
+        13th & S S S S S S S S S S S S S S \\
+        \bottomrule
+    \end{tabular}
+\end{inlinetable*}
+
+This required a total of 9 flips.
+
+In the second example, the following flips are required:
+
+\begin{inlinetable*}
+    \begin{tabular}{cc}
+        \toprule
+        Flipped card & Line \\
+        \midrule
+        4th & S S S S H \\
+        5th & S S S S S \\
+        \bottomrule
+    \end{tabular}
+\end{inlinetable*}
+
+This required a total of 2 flips.
